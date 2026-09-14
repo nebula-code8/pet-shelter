@@ -44,4 +44,9 @@ public class UserService: IUserService
         var result = _userRepository.AuthenticateUser(email, password);
         return result;
     }
+    
+    public List<User> GetAll()
+    {
+        return _userRepository.GetAll();
+    }
 }

@@ -201,12 +201,12 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
             Convert.ToString(reader["name"])!,
             Convert.ToString(reader["surname"])!,
             (Gender)Convert.ToInt32(reader["gender"]),
-            DateOnly.FromDateTime(Convert.ToDateTime(reader["date_of_birth"])),
+            (DateOnly)reader["date_of_birth"],
             Convert.ToString(reader["phone_number"])!,
             Convert.ToString(reader["email"])!,
             Convert.ToString(reader["password"])!,
             (Role)Convert.ToInt32(reader["role"]),
-            Convert.ToString(reader["address"]),
+            Convert.ToString(reader["address"])!,
             Convert.ToBoolean(reader["is_deleted"])
         );
     }

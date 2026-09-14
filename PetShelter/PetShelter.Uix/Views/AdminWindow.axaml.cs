@@ -26,6 +26,10 @@ public partial class AdminWindow : Window
 
     private void UsersButton_Click(object? sender, RoutedEventArgs e)
     {
+        UsersWindow usersWindow = new(_viewModel.UserId);
+        usersWindow.Show();
+
+        Close();
     }
 
     private void LogoutButton_Click(object? sender, RoutedEventArgs e)

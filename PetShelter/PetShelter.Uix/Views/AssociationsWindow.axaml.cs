@@ -19,12 +19,41 @@ public partial class AssociationsWindow : Window
         DataContext = _viewModel;
     }
 
-    private void AddButton_Click(object? sender, RoutedEventArgs e)
+    private async void AddButton_Click(
+        object? sender,
+        RoutedEventArgs e)
     {
+        AssociationFormWindow window = new();
+
+        bool result =
+            await window.ShowDialog<bool>(this);
+
+        if (result)
+        {
+            _viewModel.LoadAssociations();
+        }
     }
 
-    private void EditButton_Click(object? sender, RoutedEventArgs e)
+    private async void EditButton_Click(
+        object? sender,
+        RoutedEventArgs e)
     {
+        var association =
+            _viewModel.GetSelectedAssociationForEdit();
+
+        if (association == null)
+            return;
+
+        AssociationFormWindow window =
+            new(association);
+
+        bool result =
+            await window.ShowDialog<bool>(this);
+
+        if (result)
+        {
+            _viewModel.LoadAssociations();
+        }
     }
 
     private void DeleteButton_Click(object? sender, RoutedEventArgs e)

@@ -85,7 +85,20 @@ public class AssociationsViewModel : INotifyPropertyChanged
             ErrorMessage = ex.Message;
         }
     }
+    
+    public Association? GetSelectedAssociationForEdit()
+    {
+        ErrorMessage = "";
 
+        if (SelectedAssociation == null)
+        {
+            ErrorMessage = "Please select an association.";
+            return null;
+        }
+
+        return SelectedAssociation;
+    }
+    
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

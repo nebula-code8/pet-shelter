@@ -1,0 +1,142 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PetShelter.Uix.Views.RegistrationWindow"
+        Title="RegistrationWindow">
+    
+    <Grid Background="#F5F5F5">
+
+        <ScrollViewer
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+
+            <Border
+                Width="500"
+                Padding="35"
+                Background="White"
+                CornerRadius="12"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <StackPanel Spacing="14">
+
+                    <TextBlock
+                        Text="Create Account"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"/>
+
+                    <TextBlock
+                        Text="Register as a client"
+                        FontSize="18"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,15"/>
+
+                    <!-- Name -->
+
+                    <TextBlock Text="Name"/>
+
+                    <TextBox
+                        x:Name="NameTextBox"
+                        Watermark="Enter your name"/>
+
+                    <!-- Surname -->
+
+                    <TextBlock Text="Surname"/>
+
+                    <TextBox
+                        x:Name="SurnameTextBox"
+                        Watermark="Enter your surname"/>
+
+                    <!-- Gender -->
+
+                    <TextBlock Text="Gender"/>
+
+                    <ComboBox
+                        x:Name="GenderComboBox"
+                        PlaceholderText="Select gender">
+
+                        <ComboBoxItem Content="Male"/>
+                        <ComboBoxItem Content="Female"/>
+
+                    </ComboBox>
+
+                    <!-- Date of birth -->
+
+                    <TextBlock Text="Date of birth"/>
+
+                    <DatePicker
+                        x:Name="DateOfBirthPicker"/>
+
+                    <!-- Phone -->
+
+                    <TextBlock Text="Phone number"/>
+
+                    <TextBox
+                        x:Name="PhoneTextBox"
+                        Watermark="Enter your phone number"/>
+
+                    <!-- Email -->
+
+                    <TextBlock Text="Email"/>
+
+                    <TextBox
+                        x:Name="EmailTextBox"
+                        Watermark="Enter your email"/>
+
+                    <!-- Address -->
+
+                    <TextBlock Text="Address"/>
+
+                    <TextBox
+                        x:Name="AddressTextBox"
+                        Watermark="Enter your address"/>
+
+                    <!-- Password -->
+
+                    <TextBlock Text="Password"/>
+
+                    <TextBox
+                        x:Name="PasswordTextBox"
+                        PasswordChar="●"
+                        Watermark="Enter your password"/>
+
+                    <!-- Confirm password -->
+
+                    <TextBlock Text="Confirm password"/>
+
+                    <TextBox
+                        x:Name="ConfirmPasswordTextBox"
+                        PasswordChar="●"
+                        Watermark="Repeat your password"/>
+
+                    <TextBlock
+                        x:Name="ErrorTextBlock"
+                        Foreground="Red"
+                        IsVisible="False"
+                        TextWrapping="Wrap"/>
+
+                    <Button
+                        Content="Create Account"
+                        Height="42"
+                        Foreground="Gray"
+                        Margin="0,10,0,0"
+                        Click="RegisterButton_Click"/>
+
+                    <Button
+                        Content="Back to Login"
+                        Height="42"
+                        Foreground="Gray"
+                        Click="BackButton_Click"/>
+
+                </StackPanel>
+
+            </Border>
+
+        </ScrollViewer>
+
+    </Grid>
+
+</Window>

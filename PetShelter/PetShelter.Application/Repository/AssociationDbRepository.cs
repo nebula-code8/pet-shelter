@@ -1,9 +1,10 @@
 using System.Data;
 using PetShelter.Application.Domain;
+using PetShelter.Application.Domain.RepositoryInterfaces;
 
 namespace PetShelter.Application.Repository;
 
-public class AssociationDbRepository: BaseDbRepository
+public class AssociationDbRepository : BaseDbRepository, IAssociationRepository
 {
     public long Insert(Association association)
     {
@@ -11,32 +12,32 @@ public class AssociationDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            INSERT INTO associations
-            (
-                name,
-                date_of_establishment,
-                phone_number,
-                email,
-                tip,
-                description,
-                address,
-                admin,
-                is_deleted
-            )
-            VALUES
-            (
-                @name,
-                @date_of_establishment,
-                @phone_number,
-                @email,
-                @tip,
-                @description,
-                @address,
-                @admin,
-                @is_deleted
-            )
-            RETURNING id;
-            """;
+                              INSERT INTO associations
+                              (
+                                  name,
+                                  date_of_establishment,
+                                  phone_number,
+                                  email,
+                                  tip,
+                                  description,
+                                  address,
+                                  admin,
+                                  is_deleted
+                              )
+                              VALUES
+                              (
+                                  @name,
+                                  @date_of_establishment,
+                                  @phone_number,
+                                  @email,
+                                  @tip,
+                                  @description,
+                                  @address,
+                                  @admin,
+                                  @is_deleted
+                              )
+                              RETURNING id;
+                              """;
 
         AddParameter(command, "@name", association.Name);
         AddParameter(command, "@date_of_establishment", association.DateOfEstabishment);
@@ -57,19 +58,19 @@ public class AssociationDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE associations
-            SET
-                name = @name,
-                date_of_establishment = @date_of_establishment,
-                phone_number = @phone_number,
-                email = @email,
-                tip = @tip,
-                description = @description,
-                address = @address,
-                admin = @admin,
-                is_deleted = @is_deleted
-            WHERE id = @id;
-            """;
+                              UPDATE associations
+                              SET
+                                  name = @name,
+                                  date_of_establishment = @date_of_establishment,
+                                  phone_number = @phone_number,
+                                  email = @email,
+                                  tip = @tip,
+                                  description = @description,
+                                  address = @address,
+                                  admin = @admin,
+                                  is_deleted = @is_deleted
+                              WHERE id = @id;
+                              """;
 
         AddParameter(command, "@id", association.Id);
         AddParameter(command, "@name", association.Name);
@@ -91,21 +92,21 @@ public class AssociationDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                id,
-                name,
-                date_of_establishment,
-                phone_number,
-                email,
-                tip,
-                description,
-                address,
-                admin,
-                is_deleted
-            FROM associations
-            WHERE id = @id
-              AND is_deleted = FALSE;
-            """;
+                              SELECT
+                                  id,
+                                  name,
+                                  date_of_establishment,
+                                  phone_number,
+                                  email,
+                                  tip,
+                                  description,
+                                  address,
+                                  admin,
+                                  is_deleted
+                              FROM associations
+                              WHERE id = @id
+                                AND is_deleted = FALSE;
+                              """;
 
         AddParameter(command, "@id", id);
 
@@ -123,21 +124,21 @@ public class AssociationDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                id,
-                name,
-                date_of_establishment,
-                phone_number,
-                email,
-                tip,
-                description,
-                address,
-                admin,
-                is_deleted
-            FROM associations
-            WHERE is_deleted = FALSE
-            ORDER BY id;
-            """;
+                              SELECT
+                                  id,
+                                  name,
+                                  date_of_establishment,
+                                  phone_number,
+                                  email,
+                                  tip,
+                                  description,
+                                  address,
+                                  admin,
+                                  is_deleted
+                              FROM associations
+                              WHERE is_deleted = FALSE
+                              ORDER BY id;
+                              """;
 
         using IDataReader reader = command.ExecuteReader();
 
@@ -157,11 +158,11 @@ public class AssociationDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE associations
-            SET is_deleted = TRUE
-            WHERE id = @id
-              AND is_deleted = FALSE;
-            """;
+                              UPDATE associations
+                              SET is_deleted = TRUE
+                              WHERE id = @id
+                                AND is_deleted = FALSE;
+                              """;
 
         AddParameter(command, "@id", id);
 

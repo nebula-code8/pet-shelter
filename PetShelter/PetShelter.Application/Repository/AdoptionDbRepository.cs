@@ -1,9 +1,10 @@
 using System.Data;
 using PetShelter.Application.Domain;
+using PetShelter.Application.Domain.RepositoryInterfaces;
 
 namespace PetShelter.Application.Repository;
 
-public class AdoptionDbRepository: BaseDbRepository
+public class AdoptionDbRepository : BaseDbRepository, IAdoptionRepository
 {
     public void Insert(AdoptionRequest request)
     {
@@ -11,23 +12,23 @@ public class AdoptionDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            INSERT INTO adoption_requests
-            (
-                user_id,
-                animal_id,
-                status,
-                adoption_date,
-                request_date
-            )
-            VALUES
-            (
-                @user_id,
-                @animal_id,
-                @status,
-                @adoption_date,
-                @request_date
-            );
-            """;
+                              INSERT INTO adoption_requests
+                              (
+                                  user_id,
+                                  animal_id,
+                                  status,
+                                  adoption_date,
+                                  request_date
+                              )
+                              VALUES
+                              (
+                                  @user_id,
+                                  @animal_id,
+                                  @status,
+                                  @adoption_date,
+                                  @request_date
+                              );
+                              """;
 
         AddParameter(command, "@user_id", request.UserId);
         AddParameter(command, "@animal_id", request.AnimalId);
@@ -44,14 +45,14 @@ public class AdoptionDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE adoption_requests
-            SET
-                status = @status,
-                adoption_date = @adoption_date,
-                request_date = @request_date
-            WHERE user_id = @user_id
-              AND animal_id = @animal_id;
-            """;
+                              UPDATE adoption_requests
+                              SET
+                                  status = @status,
+                                  adoption_date = @adoption_date,
+                                  request_date = @request_date
+                              WHERE user_id = @user_id
+                                AND animal_id = @animal_id;
+                              """;
 
         AddParameter(command, "@status", (int)request.AdoptionStatus);
         AddParameter(command, "@adoption_date", request.AdoptionDate);
@@ -68,16 +69,16 @@ public class AdoptionDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                user_id,
-                animal_id,
-                status,
-                adoption_date,
-                request_date
-            FROM adoption_requests
-            WHERE user_id = @user_id
-              AND animal_id = @animal_id;
-            """;
+                              SELECT
+                                  user_id,
+                                  animal_id,
+                                  status,
+                                  adoption_date,
+                                  request_date
+                              FROM adoption_requests
+                              WHERE user_id = @user_id
+                                AND animal_id = @animal_id;
+                              """;
 
         AddParameter(command, "@user_id", userId);
         AddParameter(command, "@animal_id", animalId);
@@ -96,15 +97,15 @@ public class AdoptionDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                user_id,
-                animal_id,
-                status,
-                adoption_date,
-                request_date
-            FROM adoption_requests
-            ORDER BY request_date DESC;
-            """;
+                              SELECT
+                                  user_id,
+                                  animal_id,
+                                  status,
+                                  adoption_date,
+                                  request_date
+                              FROM adoption_requests
+                              ORDER BY request_date DESC;
+                              """;
 
         using IDataReader reader = command.ExecuteReader();
 
@@ -124,10 +125,10 @@ public class AdoptionDbRepository: BaseDbRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            DELETE FROM adoption_requests
-            WHERE user_id = @user_id
-              AND animal_id = @animal_id;
-            """;
+                              DELETE FROM adoption_requests
+                              WHERE user_id = @user_id
+                                AND animal_id = @animal_id;
+                              """;
 
         AddParameter(command, "@user_id", userId);
         AddParameter(command, "@animal_id", animalId);

@@ -79,5 +79,4 @@ public class Animal
         AssociationId = associationId;
         IsDeleted = isDeleted;
     }
-
 }

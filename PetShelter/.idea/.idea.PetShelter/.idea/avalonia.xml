@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="PetShelter.Uix/App.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+        <entry key="PetShelter.Uix/Views/LoginWindow.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+        <entry key="PetShelter.Uix/Views/RegistrationWindow.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

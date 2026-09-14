@@ -4,7 +4,7 @@ using PetShelter.Application.Domain.RepositoryInterfaces;
 
 namespace PetShelter.Application.Repository;
 
-public class AnimalDbRepository: BaseDbRepository, IAnimalRepository
+public class AnimalDbRepository : BaseDbRepository, IAnimalRepository
 {
     public long Insert(Animal animal)
     {
@@ -12,38 +12,38 @@ public class AnimalDbRepository: BaseDbRepository, IAnimalRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            INSERT INTO animals
-            (
-                name,
-                species,
-                breed,
-                gender,
-                date_of_birth,
-                description,
-                is_vaccinated,
-                is_sterilized,
-                health_status,
-                date_arrived,
-                association_id,
-                is_deleted
-            )
-            VALUES
-            (
-                @name,
-                @species,
-                @breed,
-                @gender,
-                @date_of_birth,
-                @description,
-                @is_vaccinated,
-                @is_sterilized,
-                @health_status,
-                @date_arrived,
-                @association_id,
-                @is_deleted
-            )
-            RETURNING id;
-            """;
+                              INSERT INTO animals
+                              (
+                                  name,
+                                  species,
+                                  breed,
+                                  gender,
+                                  date_of_birth,
+                                  description,
+                                  is_vaccinated,
+                                  is_sterilized,
+                                  health_status,
+                                  date_arrived,
+                                  association_id,
+                                  is_deleted
+                              )
+                              VALUES
+                              (
+                                  @name,
+                                  @species,
+                                  @breed,
+                                  @gender,
+                                  @date_of_birth,
+                                  @description,
+                                  @is_vaccinated,
+                                  @is_sterilized,
+                                  @health_status,
+                                  @date_arrived,
+                                  @association_id,
+                                  @is_deleted
+                              )
+                              RETURNING id;
+                              """;
 
         AddParameter(command, "@name", animal.Name);
         AddParameter(command, "@species", animal.Species);
@@ -67,22 +67,22 @@ public class AnimalDbRepository: BaseDbRepository, IAnimalRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE animals
-            SET
-                name = @name,
-                species = @species,
-                breed = @breed,
-                gender = @gender,
-                date_of_birth = @date_of_birth,
-                description = @description,
-                is_vaccinated = @is_vaccinated,
-                is_sterilized = @is_sterilized,
-                health_status = @health_status,
-                date_arrived = @date_arrived,
-                association_id = @association_id,
-                is_deleted = @is_deleted
-            WHERE id = @id;
-            """;
+                              UPDATE animals
+                              SET
+                                  name = @name,
+                                  species = @species,
+                                  breed = @breed,
+                                  gender = @gender,
+                                  date_of_birth = @date_of_birth,
+                                  description = @description,
+                                  is_vaccinated = @is_vaccinated,
+                                  is_sterilized = @is_sterilized,
+                                  health_status = @health_status,
+                                  date_arrived = @date_arrived,
+                                  association_id = @association_id,
+                                  is_deleted = @is_deleted
+                              WHERE id = @id;
+                              """;
 
         AddParameter(command, "@id", animal.Id);
         AddParameter(command, "@name", animal.Name);
@@ -107,24 +107,24 @@ public class AnimalDbRepository: BaseDbRepository, IAnimalRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                id,
-                name,
-                species,
-                breed,
-                gender,
-                date_of_birth,
-                description,
-                is_vaccinated,
-                is_sterilized,
-                health_status,
-                date_arrived,
-                association_id,
-                is_deleted
-            FROM animals
-            WHERE id = @id
-              AND is_deleted = FALSE;
-            """;
+                              SELECT
+                                  id,
+                                  name,
+                                  species,
+                                  breed,
+                                  gender,
+                                  date_of_birth,
+                                  description,
+                                  is_vaccinated,
+                                  is_sterilized,
+                                  health_status,
+                                  date_arrived,
+                                  association_id,
+                                  is_deleted
+                              FROM animals
+                              WHERE id = @id
+                                AND is_deleted = FALSE;
+                              """;
 
         AddParameter(command, "@id", id);
 
@@ -142,24 +142,24 @@ public class AnimalDbRepository: BaseDbRepository, IAnimalRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                id,
-                name,
-                species,
-                breed,
-                gender,
-                date_of_birth,
-                description,
-                is_vaccinated,
-                is_sterilized,
-                health_status,
-                date_arrived,
-                association_id,
-                is_deleted
-            FROM animals
-            WHERE is_deleted = FALSE
-            ORDER BY id;
-            """;
+                              SELECT
+                                  id,
+                                  name,
+                                  species,
+                                  breed,
+                                  gender,
+                                  date_of_birth,
+                                  description,
+                                  is_vaccinated,
+                                  is_sterilized,
+                                  health_status,
+                                  date_arrived,
+                                  association_id,
+                                  is_deleted
+                              FROM animals
+                              WHERE is_deleted = FALSE
+                              ORDER BY id;
+                              """;
 
         using IDataReader reader = command.ExecuteReader();
 
@@ -179,11 +179,11 @@ public class AnimalDbRepository: BaseDbRepository, IAnimalRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE animals
-            SET is_deleted = TRUE
-            WHERE id = @id
-              AND is_deleted = FALSE;
-            """;
+                              UPDATE animals
+                              SET is_deleted = TRUE
+                              WHERE id = @id
+                                AND is_deleted = FALSE;
+                              """;
 
         AddParameter(command, "@id", id);
 

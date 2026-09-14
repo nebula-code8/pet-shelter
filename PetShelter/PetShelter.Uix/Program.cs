@@ -1,3 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Avalonia;
+using PetShelter.Uix;
+using PetShelter.Uix.Views;
 
-Console.WriteLine("Hello, World!");
+namespace JimBro.Uix;
+
+class Program
+{
+    [STAThread]
+
+    public static void Main(string[] args) =>
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+
+    public static AppBuilder BuildAvaloniaApp()
+        => AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .LogToTrace();
+}

@@ -15,34 +15,34 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            INSERT INTO users
-            (
-                name,
-                surname,
-                gender,
-                date_of_birth,
-                phone_number,
-                email,
-                password,
-                role,
-                address,
-                is_deleted
-            )
-            VALUES
-            (
-                @name,
-                @surname,
-                @gender,
-                @date_of_birth,
-                @phone_number,
-                @email,
-                @password,
-                @role,
-                @address,
-                @is_deleted
-            )
-            RETURNING id;
-            """;
+                              INSERT INTO users
+                              (
+                                  name,
+                                  surname,
+                                  gender,
+                                  date_of_birth,
+                                  phone_number,
+                                  email,
+                                  password,
+                                  role,
+                                  address,
+                                  is_deleted
+                              )
+                              VALUES
+                              (
+                                  @name,
+                                  @surname,
+                                  @gender,
+                                  @date_of_birth,
+                                  @phone_number,
+                                  @email,
+                                  @password,
+                                  @role,
+                                  @address,
+                                  @is_deleted
+                              )
+                              RETURNING id;
+                              """;
 
         AddParameter(command, "@name", volunteer.Name);
         AddParameter(command, "@surname", volunteer.Surname);
@@ -60,19 +60,19 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         command.Parameters.Clear();
 
         command.CommandText = """
-            INSERT INTO volunteers
-            (
-                user_id,
-                comment,
-                status
-            )
-            VALUES
-            (
-                @user_id,
-                @comment,
-                @status
-            );
-            """;
+                              INSERT INTO volunteers
+                              (
+                                  user_id,
+                                  comment,
+                                  status
+                              )
+                              VALUES
+                              (
+                                  @user_id,
+                                  @comment,
+                                  @status
+                              );
+                              """;
 
         AddParameter(command, "@user_id", userId);
         AddParameter(command, "@comment", volunteer.VolunteerComment);
@@ -91,20 +91,20 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         IDbCommand userCommand = connection.CreateCommand();
 
         userCommand.CommandText = """
-            UPDATE users
-            SET
-                name = @name,
-                surname = @surname,
-                gender = @gender,
-                date_of_birth = @date_of_birth,
-                phone_number = @phone_number,
-                email = @email,
-                password = @password,
-                role = @role,
-                address = @address,
-                is_deleted = @is_deleted
-            WHERE id = @id;
-            """;
+                                  UPDATE users
+                                  SET
+                                      name = @name,
+                                      surname = @surname,
+                                      gender = @gender,
+                                      date_of_birth = @date_of_birth,
+                                      phone_number = @phone_number,
+                                      email = @email,
+                                      password = @password,
+                                      role = @role,
+                                      address = @address,
+                                      is_deleted = @is_deleted
+                                  WHERE id = @id;
+                                  """;
 
         AddParameter(userCommand, "@id", volunteer.Id);
         AddParameter(userCommand, "@name", volunteer.Name);
@@ -124,12 +124,12 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         IDbCommand volunteerCommand = connection.CreateCommand();
 
         volunteerCommand.CommandText = """
-            UPDATE volunteers
-            SET
-                comment = @comment,
-                status = @status
-            WHERE user_id = @user_id;
-            """;
+                                       UPDATE volunteers
+                                       SET
+                                           comment = @comment,
+                                           status = @status
+                                       WHERE user_id = @user_id;
+                                       """;
 
         AddParameter(volunteerCommand, "@user_id", volunteer.Id);
         AddParameter(volunteerCommand, "@comment", volunteer.VolunteerComment);
@@ -146,26 +146,26 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                u.id,
-                u.name,
-                u.surname,
-                u.gender,
-                u.date_of_birth,
-                u.phone_number,
-                u.email,
-                u.password,
-                u.role,
-                u.address,
-                u.is_deleted,
-                v.comment,
-                v.status
-            FROM users u
-            INNER JOIN volunteers v
-                ON u.id = v.user_id
-            WHERE u.id = @id
-              AND u.is_deleted = FALSE;
-            """;
+                              SELECT
+                                  u.id,
+                                  u.name,
+                                  u.surname,
+                                  u.gender,
+                                  u.date_of_birth,
+                                  u.phone_number,
+                                  u.email,
+                                  u.password,
+                                  u.role,
+                                  u.address,
+                                  u.is_deleted,
+                                  v.comment,
+                                  v.status
+                              FROM users u
+                              INNER JOIN volunteers v
+                                  ON u.id = v.user_id
+                              WHERE u.id = @id
+                                AND u.is_deleted = FALSE;
+                              """;
 
         AddParameter(command, "@id", id);
 
@@ -183,26 +183,26 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                u.id,
-                u.name,
-                u.surname,
-                u.gender,
-                u.date_of_birth,
-                u.phone_number,
-                u.email,
-                u.password,
-                u.role,
-                u.address,
-                u.is_deleted,
-                v.comment,
-                v.status
-            FROM users u
-            INNER JOIN volunteers v
-                ON u.id = v.user_id
-            WHERE u.is_deleted = FALSE
-            ORDER BY u.id;
-            """;
+                              SELECT
+                                  u.id,
+                                  u.name,
+                                  u.surname,
+                                  u.gender,
+                                  u.date_of_birth,
+                                  u.phone_number,
+                                  u.email,
+                                  u.password,
+                                  u.role,
+                                  u.address,
+                                  u.is_deleted,
+                                  v.comment,
+                                  v.status
+                              FROM users u
+                              INNER JOIN volunteers v
+                                  ON u.id = v.user_id
+                              WHERE u.is_deleted = FALSE
+                              ORDER BY u.id;
+                              """;
 
         using IDataReader reader = command.ExecuteReader();
 
@@ -222,11 +222,11 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE users
-            SET is_deleted = TRUE
-            WHERE id = @id
-              AND is_deleted = FALSE;
-            """;
+                              UPDATE users
+                              SET is_deleted = TRUE
+                              WHERE id = @id
+                                AND is_deleted = FALSE;
+                              """;
 
         AddParameter(command, "@id", id);
 

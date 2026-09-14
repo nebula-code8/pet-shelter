@@ -12,7 +12,7 @@ public class Association
     public string Address { get; private set; }
     public long AdminId { get; private set; }
     public bool IsDeleted { get; private set; }
-    
+
     public Association(
         string name,
         DateOnly dateOfEstabishment,

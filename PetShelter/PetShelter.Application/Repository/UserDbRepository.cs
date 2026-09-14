@@ -12,11 +12,11 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT id, role
-            FROM users
-            WHERE email = @email
-              AND password = @password
-            """;
+                              SELECT id, role
+                              FROM users
+                              WHERE email = @email
+                                AND password = @password
+                              """;
 
         AddParameter(command, "@email", email);
         AddParameter(command, "@password", password);
@@ -38,30 +38,30 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            INSERT INTO users
-            (
-                name,
-                surname,
-                gender,
-                date_of_birth,
-                phone_number,
-                email,
-                password,
-                role
-            )
-            VALUES
-            (
-                @name,
-                @surname,
-                @gender,
-                @date_of_birth,
-                @phoneNumber,
-                @email,
-                @password,
-                @role
-            )
-            RETURNING id;
-            """;
+                              INSERT INTO users
+                              (
+                                  name,
+                                  surname,
+                                  gender,
+                                  date_of_birth,
+                                  phone_number,
+                                  email,
+                                  password,
+                                  role
+                              )
+                              VALUES
+                              (
+                                  @name,
+                                  @surname,
+                                  @gender,
+                                  @date_of_birth,
+                                  @phoneNumber,
+                                  @email,
+                                  @password,
+                                  @role
+                              )
+                              RETURNING id;
+                              """;
 
         AddParameter(command, "@name", user.Name);
         AddParameter(command, "@surname", user.Surname);
@@ -81,18 +81,18 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            UPDATE users
-            SET
-                name = @name,
-                surname = @surname,
-                gender = @gender,
-                date_of_birth = @date_of_birth,
-                phone_number = @phoneNumber,
-                email = @email,
-                password = @password,
-                role = @role
-            WHERE id = @id;
-            """;
+                              UPDATE users
+                              SET
+                                  name = @name,
+                                  surname = @surname,
+                                  gender = @gender,
+                                  date_of_birth = @date_of_birth,
+                                  phone_number = @phoneNumber,
+                                  email = @email,
+                                  password = @password,
+                                  role = @role
+                              WHERE id = @id;
+                              """;
 
         AddParameter(command, "@name", user.Name);
         AddParameter(command, "@surname", user.Surname);
@@ -113,19 +113,19 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                id,
-                name,
-                surname,
-                gender,
-                date_of_birth,
-                phone_number,
-                email,
-                password,
-                role
-            FROM users
-            WHERE id = @id;
-            """;
+                              SELECT
+                                  id,
+                                  name,
+                                  surname,
+                                  gender,
+                                  date_of_birth,
+                                  phone_number,
+                                  email,
+                                  password,
+                                  role
+                              FROM users
+                              WHERE id = @id;
+                              """;
 
         AddParameter(command, "@id", id);
 
@@ -143,19 +143,19 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            SELECT
-                id,
-                name,
-                surname,
-                gender,
-                date_of_birth,
-                phone_number,
-                email,
-                password,
-                role
-            FROM users
-            ORDER BY id;
-            """;
+                              SELECT
+                                  id,
+                                  name,
+                                  surname,
+                                  gender,
+                                  date_of_birth,
+                                  phone_number,
+                                  email,
+                                  password,
+                                  role
+                              FROM users
+                              ORDER BY id;
+                              """;
 
         using IDataReader reader = command.ExecuteReader();
 
@@ -175,9 +175,9 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-            DELETE FROM users
-            WHERE id = @id;
-            """;
+                              DELETE FROM users
+                              WHERE id = @id;
+                              """;
 
         AddParameter(command, "@id", id);
 

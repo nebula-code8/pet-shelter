@@ -16,7 +16,8 @@ public class User
     public string Address { get; private set; }
     public bool IsDeleted { get; private set; }
 
-    public User(string name, string surname, Gender gender, DateOnly dateOfBirth, string phoneNumber, string emailAddress, string password, Role role, string address, bool isDeleted)
+    public User(string name, string surname, Gender gender, DateOnly dateOfBirth, string phoneNumber,
+        string emailAddress, string password, Role role, string address, bool isDeleted)
     {
         Name = name;
         Surname = surname;
@@ -30,7 +31,8 @@ public class User
         IsDeleted = isDeleted;
     }
 
-    public User(long id, string name, string surname, Gender gender, DateOnly dateOfBirth, string phoneNumber, string emailAddress, string password, Role role, string address, bool isDeleted)
+    public User(long id, string name, string surname, Gender gender, DateOnly dateOfBirth, string phoneNumber,
+        string emailAddress, string password, Role role, string address, bool isDeleted)
     {
         Id = id;
         Name = name;

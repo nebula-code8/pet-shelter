@@ -1,10 +1,11 @@
 using System.Data;
 using PetShelter.Application.Domain;
+using PetShelter.Application.Domain.RepositoryInterfaces;
 using PetShelter.Application.Repository;
 
 namespace PetShelter.Infrastructure.Database;
 
-public class VolunteerDbRepository : BaseDbRepository
+public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
 {
     private readonly UserDbRepository _userRepository = new();
 

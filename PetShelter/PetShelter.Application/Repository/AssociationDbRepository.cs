@@ -1,9 +1,10 @@
 using System.Data;
 using PetShelter.Application.Domain;
+using PetShelter.Application.Domain.RepositoryInterfaces;
 
 namespace PetShelter.Application.Repository;
 
-public class AssociationDbRepository: BaseDbRepository
+public class AssociationDbRepository: BaseDbRepository, IAssociationRepository
 {
     public long Insert(Association association)
     {

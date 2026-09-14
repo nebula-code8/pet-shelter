@@ -1,9 +1,10 @@
 using System.Data;
 using PetShelter.Application.Domain;
+using PetShelter.Application.Domain.RepositoryInterfaces;
 
 namespace PetShelter.Application.Repository;
 
-public class UserDbRepository : BaseDbRepository
+public class UserDbRepository : BaseDbRepository, IUserRepository
 {
     public (long Id, Role Role)? AuthenticateUser(string email, string password)
     {

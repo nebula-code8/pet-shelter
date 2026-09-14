@@ -1,9 +1,10 @@
 using System.Data;
 using PetShelter.Application.Domain;
+using PetShelter.Application.Domain.RepositoryInterfaces;
 
 namespace PetShelter.Application.Repository;
 
-public class AdoptionDbRepository: BaseDbRepository
+public class AdoptionDbRepository: BaseDbRepository, IAdoptionRepository
 {
     public void Insert(AdoptionRequest request)
     {

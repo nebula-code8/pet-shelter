@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "1b/MRFRW1sM=",
+  "dgSpecHash": "bt8Ae84ZxB0=",
   "success": true,
   "projectFilePath": "/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Application/PetShelter.Application.csproj",
   "expectedPackageFiles": [
+    "/home/nebula/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "/home/nebula/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.0/microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
+    "/home/nebula/.nuget/packages/npgsql/10.0.3/npgsql.10.0.3.nupkg.sha512",
     "/home/nebula/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.11/microsoft.aspnetcore.app.ref.10.0.11.nupkg.sha512"
   ],
   "logs": []

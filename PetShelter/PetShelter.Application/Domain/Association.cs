@@ -7,7 +7,6 @@ public class Association
     public DateOnly DateOfEstabishment { get; private set; }
     public string PhoneNumber { get; private set; }
     public string EmailAddress { get; private set; }
-    public string Password { get; private set; }
     public string EstablishmentType { get; private set; }
     public string Description { get; private set; }
     public string Address { get; private set; }
@@ -18,7 +17,6 @@ public class Association
         DateOnly dateOfEstabishment,
         string phoneNumber,
         string emailAddress,
-        string password,
         string establishmentType,
         string description,
         string address,
@@ -28,7 +26,6 @@ public class Association
         DateOfEstabishment = dateOfEstabishment;
         PhoneNumber = phoneNumber;
         EmailAddress = emailAddress;
-        Password = password;
         EstablishmentType = establishmentType;
         Description = description;
         Address = address;
@@ -41,7 +38,6 @@ public class Association
         DateOnly dateOfEstabishment,
         string phoneNumber,
         string emailAddress,
-        string password,
         string establishmentType,
         string description,
         string address,
@@ -52,7 +48,6 @@ public class Association
         DateOfEstabishment = dateOfEstabishment;
         PhoneNumber = phoneNumber;
         EmailAddress = emailAddress;
-        Password = password;
         EstablishmentType = establishmentType;
         Description = description;
         Address = address;

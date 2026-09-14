@@ -4,6 +4,6 @@ namespace PetShelter.Application.Services.ServiceInterfaces;
 
 public interface IUserService
 {
-    public (long Id, Role Role)? AuthenticateUser(string email, string password);
-    public void Insert(User user);
+    (long Id, Role Role)? AuthenticateUser(string email, string password);
+    long Insert(User user);
 }

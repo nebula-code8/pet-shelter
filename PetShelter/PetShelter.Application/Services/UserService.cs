@@ -13,7 +13,7 @@ public class UserService: IUserService
         _userRepository = Injector.CreateInstance<IUserRepository>();
     }
     
-    public void Insert(User user)
+    public long Insert(User user)
     {
         if (string.IsNullOrWhiteSpace(user.Name) ||
             string.IsNullOrWhiteSpace(user.Surname) ||
@@ -24,16 +24,17 @@ public class UserService: IUserService
         {
             throw new Exception("Please fill in all fields");
         }
+
         try
         {
-            long userId = _userRepository.Insert(user);
+            return _userRepository.Insert(user);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex);
+
             throw new Exception(
-                "Registration failed. " +
-                "The email may already be in use."
+                "Registration failed. The email may already be in use."
             );
         }
     }

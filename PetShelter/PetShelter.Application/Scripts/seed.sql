@@ -4,6 +4,7 @@
 -- 0 = CLIENT
 -- 1 = VOLUNTEER
 -- 2 = ADMIN
+-- 3 = ASSOCIATION_ADMIN
 -- gender:
 -- 0 = MALE
 -- 1 = FEMALE
@@ -42,7 +43,19 @@ VALUES
 
     ('Marija', 'Pavlović', 1, '1992-12-05', '+381688889900',
      'marija.pavlovic@gmail.com', 'password123', 2,
-     'Medijana 7, Niš', FALSE);
+     'Medijana 7, Niš', FALSE),
+
+    ('Milan', 'Kostić', 0, '1988-04-17', '+381601111111',
+     'milan.kostic@nisanimalrescue.rs', 'password123', 3,
+     'Bulevar Svetog cara Konstantina 42, Niš', FALSE),
+
+    ('Ivana', 'Savić', 1, '1991-07-23', '+381602222222',
+     'ivana.savic@happypaws.rs', 'password123', 3,
+     'Dimitrija Tucovića 18, Niš', FALSE),
+
+    ('Nemanja', 'Marković', 0, '1986-10-09', '+381603333333',
+     'nemanja.markovic@safetails.rs', 'password123', 3,
+     'Bulevar Nikole Tesle 30, Niš', FALSE);
 
 
 -- =========================================================
@@ -78,7 +91,7 @@ VALUES
         'Animal Rescue',
         'Association dedicated to rescuing, treating and finding homes for abandoned animals.',
         'Bulevar Svetog cara Konstantina 80, Niš',
-        8,
+        9,
         FALSE
     ),
 
@@ -90,7 +103,7 @@ VALUES
         'Animal Shelter',
         'Local animal shelter providing temporary homes and veterinary care for abandoned pets.',
         'Dimitrija Tucovića 25, Niš',
-        8,
+        10,
         FALSE
     ),
 
@@ -102,7 +115,7 @@ VALUES
         'Rescue Organization',
         'Non-profit organization focused on rescuing dogs and cats from dangerous environments.',
         'Bulevar Nikole Tesle 42, Niš',
-        8,
+        11,
         FALSE
     );
 

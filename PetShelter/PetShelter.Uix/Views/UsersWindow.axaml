@@ -98,11 +98,6 @@
                     <DataGridTextColumn Header="Address"
                                         Binding="{Binding Address}"
                                         Width="*"/>
-
-                    <DataGridTextColumn Header="Deleted"
-                                        Binding="{Binding IsDeleted}"
-                                        Width="90"/>
-
                 </DataGrid.Columns>
 
             </DataGrid>

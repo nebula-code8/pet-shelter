@@ -195,7 +195,8 @@ public class UserDbRepository : BaseDbRepository
             Convert.ToString(reader["email"])!,
             Convert.ToString(reader["password"])!,
             (Role)Convert.ToInt32(reader["role"]),
-            Convert.ToString(reader["address"])
+            Convert.ToString(reader["address"]),
+            Convert.ToBoolean(reader["is_deleted"])
         );
     }
 }

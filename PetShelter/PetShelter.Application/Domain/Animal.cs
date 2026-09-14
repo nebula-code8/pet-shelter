@@ -20,6 +20,7 @@ public class Animal
     public DateOnly DateArrived { get; private set; }
 
     public long AssociationId { get; private set; }
+    public bool IsDeleted { get; private set; }
 
     public Animal(
         string name,
@@ -32,7 +33,8 @@ public class Animal
         bool isSterilized,
         string healthStatus,
         DateOnly dateArrived,
-        long associationId)
+        long associationId,
+        bool isDeleted)
     {
         Name = name;
         Species = species;
@@ -45,6 +47,7 @@ public class Animal
         HealthStatus = healthStatus;
         DateArrived = dateArrived;
         AssociationId = associationId;
+        IsDeleted = isDeleted;
     }
 
     public Animal(
@@ -59,7 +62,8 @@ public class Animal
         bool isSterilized,
         string healthStatus,
         DateOnly dateArrived,
-        long associationId)
+        long associationId,
+        bool isDeleted)
     {
         Id = id;
         Name = name;
@@ -73,6 +77,7 @@ public class Animal
         HealthStatus = healthStatus;
         DateArrived = dateArrived;
         AssociationId = associationId;
+        IsDeleted = isDeleted;
     }
 
 }

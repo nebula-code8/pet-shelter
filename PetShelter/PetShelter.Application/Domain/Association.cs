@@ -11,6 +11,7 @@ public class Association
     public string Description { get; private set; }
     public string Address { get; private set; }
     public long AdminId { get; private set; }
+    public bool IsDeleted { get; private set; }
     
     public Association(
         string name,
@@ -20,7 +21,8 @@ public class Association
         string establishmentType,
         string description,
         string address,
-        long adminId)
+        long adminId,
+        bool isDeleted)
     {
         Name = name;
         DateOfEstabishment = dateOfEstabishment;
@@ -30,6 +32,7 @@ public class Association
         Description = description;
         Address = address;
         AdminId = adminId;
+        IsDeleted = isDeleted;
     }
 
     public Association(
@@ -41,7 +44,8 @@ public class Association
         string establishmentType,
         string description,
         string address,
-        long adminId)
+        long adminId,
+        bool isDeleted)
     {
         Id = id;
         Name = name;
@@ -52,5 +56,6 @@ public class Association
         Description = description;
         Address = address;
         AdminId = adminId;
+        IsDeleted = isDeleted;
     }
 }

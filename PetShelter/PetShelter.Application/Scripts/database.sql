@@ -14,7 +14,8 @@ CREATE TABLE users (
                        email VARCHAR(50) NOT NULL UNIQUE,
                        password VARCHAR(50) NOT NULL,
                        role INT NOT NULL DEFAULT 0,
-                       address VARCHAR(255) NOT NULL
+                       address VARCHAR(255) NOT NULL,
+                       is_deleted BOOL NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE volunteers (
@@ -32,7 +33,8 @@ CREATE TABLE associations (
                               tip VARCHAR(100) NOT NULL,
                               description VARCHAR(255) NOT NULL,
                               address VARCHAR(255),
-                              admin BIGINT REFERENCES users(id)
+                              admin BIGINT REFERENCES users(id),
+                              is_deleted BOOL DEFAULT FALSE
 );
 
 CREATE TABLE animals (
@@ -46,11 +48,14 @@ CREATE TABLE animals (
                          is_sterilized INT,
                          health_status VARCHAR(255) NOT NULL,
                          date_arrived DATE NOT NULL,
-                         association_id BIGINT REFERENCES associations(id) ON DELETE CASCADE
+                         association_id BIGINT REFERENCES associations(id) ON DELETE CASCADE,
+                         is_deleted BOOL DEFAULT FALSE
 );
 
 CREATE TABLE adoption_requests (
                                    user_id BIGINT REFERENCES users(id),
                                    animal_id BIGINT REFERENCES animals(id),
-                                   status INT NOT NULL
+                                   status INT NOT NULL,
+                                   adoption_date DATE,
+                                   request_date DATE
 );

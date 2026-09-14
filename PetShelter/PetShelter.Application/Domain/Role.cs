@@ -4,5 +4,6 @@ public enum Role
 {
     Client,
     Volunteer,
-    Admin
+    Admin,
+    AssociationAdmin
 }

@@ -17,7 +17,7 @@ public static class PostgresConnection
 
     private static string LoadConnectionString()
     {
-        var configPath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+        var configPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
 
         if (!File.Exists(configPath))
         {

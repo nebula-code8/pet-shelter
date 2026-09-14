@@ -1,0 +1,116 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="PetShelter.Uix.Views.AdminWindow"
+        Width="700"
+        Height="450"
+        Title="Administrator"
+        Background="White">
+
+    <Window.Styles>
+
+
+        <Style Selector="Button.main">
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style Selector="Button.main:pointerover">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.main:pressed">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+
+
+        <Style Selector="Button.logout">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Background" Value="#EEEEEE"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.logout:pointerover">
+            <Setter Property="Background" Value="#EEEEEE"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.logout:pressed">
+            <Setter Property="Background" Value="#EEEEEE"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+    </Window.Styles>
+
+    <Grid Background="White">
+
+        <Border Width="440"
+                Padding="35"
+                Background="#F7F7F7"
+                BorderBrush="#D9D9D9"
+                BorderThickness="1"
+                CornerRadius="12"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+            <StackPanel Spacing="18">
+
+                <TextBlock
+                    Text="Global Administrator"
+                    FontSize="28"
+                    FontWeight="Bold"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Text="Administration panel"
+                    FontSize="16"
+                    Foreground="#555555"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,12"/>
+
+                <Button
+                    Classes="main"
+                    Content="Associations"
+                    Click="AssociationsButton_Click"/>
+
+                <Button
+                    Classes="main"
+                    Content="All Users"
+                    Click="UsersButton_Click"/>
+
+                <Button
+                    Classes="logout"
+                    Content="Logout"
+                    HorizontalAlignment="Left"
+                    Margin="0,12,0,0"
+                    Click="LogoutButton_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>

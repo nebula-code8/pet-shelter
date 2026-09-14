@@ -1,0 +1,125 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="PetShelter.Uix.Views.UsersWindow"
+        Width="1200"
+        Height="650"
+        MinWidth="900"
+        MinHeight="500"
+        Title="All Users"
+        Background="White">
+
+    <Window.Styles>
+
+        <Style Selector="Button.back">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.back:pointerover">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.back:pressed">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+    </Window.Styles>
+
+    <Grid Margin="30"
+          RowDefinitions="Auto,*,Auto">
+
+        <TextBlock Grid.Row="0"
+                   Text="All Users"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   Margin="0,0,0,20"/>
+
+        <Border Grid.Row="1"
+                BorderBrush="#D0D0D0"
+                BorderThickness="1"
+                Background="White">
+
+            <DataGrid ItemsSource="{Binding Users}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      Background="White"
+                      Foreground="Black"
+                      GridLinesVisibility="All">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="ID"
+                                        Binding="{Binding Id}"
+                                        Width="60"/>
+
+                    <DataGridTextColumn Header="Name"
+                                        Binding="{Binding Name}"
+                                        Width="120"/>
+
+                    <DataGridTextColumn Header="Surname"
+                                        Binding="{Binding Surname}"
+                                        Width="130"/>
+
+                    <DataGridTextColumn Header="Gender"
+                                        Binding="{Binding Gender}"
+                                        Width="100"/>
+
+                    <DataGridTextColumn Header="Date of Birth"
+                                        Binding="{Binding DateOfBirth}"
+                                        Width="120"/>
+
+                    <DataGridTextColumn Header="Phone"
+                                        Binding="{Binding PhoneNumber}"
+                                        Width="150"/>
+
+                    <DataGridTextColumn Header="Email"
+                                        Binding="{Binding EmailAddress}"
+                                        Width="220"/>
+
+                    <DataGridTextColumn Header="Role"
+                                        Binding="{Binding Role}"
+                                        Width="150"/>
+
+                    <DataGridTextColumn Header="Address"
+                                        Binding="{Binding Address}"
+                                        Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,Auto"
+              Margin="0,15,0,0">
+
+            <TextBlock Grid.Column="0"
+                       Text="{Binding ErrorMessage}"
+                       Foreground="Red"
+                       VerticalAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    Classes="back"
+                    Content="Back"
+                    Click="BackButton_Click"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

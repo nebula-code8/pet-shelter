@@ -38,16 +38,16 @@ public partial class LoginWindow : Window
 
         long userId = result.Value.Id;
         Role role = result.Value.Role;
-        ErrorTextBlock.IsVisible =
-            false; // TODO:
-        // Navigate to the appropriate page depending on the role.
-        // // // Example:
-        // // // if (role == Role.Client)
-        // // MainWindow.Navigate(new ClientView(userId));
-        // // // else if (role == Role.Volunteer)
-        // // MainWindow.Navigate(new VolunteerView(userId));
-        // // // else if (role == Role.Admin)
-        // // MainWindow.Navigate(new AdminView(userId));
+        ErrorTextBlock.IsVisible = false;
+
+        if (role == Role.Admin)
+        {
+            AdminWindow adminWindow = new(userId);
+            adminWindow.Show();
+            Close();
+            return;
+        }
+        ShowError("This user role is not supported yet.");
     }
 
     private void RegisterButton_Click(object? sender, RoutedEventArgs e)

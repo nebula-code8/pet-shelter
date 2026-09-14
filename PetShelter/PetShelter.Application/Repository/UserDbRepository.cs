@@ -47,18 +47,22 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   phone_number,
                                   email,
                                   password,
-                                  role
+                                  role,
+                                  address,
+                                  is_deleted
                               )
                               VALUES
                               (
                                   @name,
                                   @surname,
                                   @gender,
-                                  @date_of_birth,
+                                  @dateOfBirth,
                                   @phoneNumber,
                                   @email,
                                   @password,
-                                  @role
+                                  @role,
+                                  @address,
+                                  @isDeleted
                               )
                               RETURNING id;
                               """;
@@ -66,11 +70,13 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         AddParameter(command, "@name", user.Name);
         AddParameter(command, "@surname", user.Surname);
         AddParameter(command, "@gender", (int)user.Gender);
-        AddParameter(command, "@date_of_birth", user.DateOfBirth);
+        AddParameter(command, "@dateOfBirth", user.DateOfBirth);
         AddParameter(command, "@phoneNumber", user.PhoneNumber);
         AddParameter(command, "@email", user.EmailAddress);
         AddParameter(command, "@password", user.Password);
         AddParameter(command, "@role", (int)user.Role);
+        AddParameter(command, "@address", user.Address);
+        AddParameter(command, "@isDeleted", user.IsDeleted);
 
         return Convert.ToInt64(command.ExecuteScalar());
     }
@@ -122,7 +128,9 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   phone_number,
                                   email,
                                   password,
-                                  role
+                                  role,
+                                  address,
+                                  is_deleted
                               FROM users
                               WHERE id = @id;
                               """;
@@ -152,7 +160,9 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   phone_number,
                                   email,
                                   password,
-                                  role
+                                  role,
+                                  address,
+                                  is_deleted
                               FROM users
                               ORDER BY id;
                               """;
@@ -191,12 +201,12 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
             Convert.ToString(reader["name"])!,
             Convert.ToString(reader["surname"])!,
             (Gender)Convert.ToInt32(reader["gender"]),
-            DateOnly.FromDateTime(Convert.ToDateTime(reader["date_of_birth"])),
+            (DateOnly)reader["date_of_birth"],
             Convert.ToString(reader["phone_number"])!,
             Convert.ToString(reader["email"])!,
             Convert.ToString(reader["password"])!,
             (Role)Convert.ToInt32(reader["role"]),
-            Convert.ToString(reader["address"]),
+            Convert.ToString(reader["address"])!,
             Convert.ToBoolean(reader["is_deleted"])
         );
     }

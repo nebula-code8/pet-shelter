@@ -174,9 +174,7 @@ public class AssociationDbRepository : BaseDbRepository, IAssociationRepository
         return new Association(
             Convert.ToInt64(reader["id"]),
             Convert.ToString(reader["name"])!,
-            DateOnly.FromDateTime(
-                Convert.ToDateTime(reader["date_of_establishment"])
-            ),
+            (DateOnly)reader["date_of_establishment"],
             Convert.ToString(reader["phone_number"])!,
             Convert.ToString(reader["email"])!,
             Convert.ToString(reader["tip"])!,

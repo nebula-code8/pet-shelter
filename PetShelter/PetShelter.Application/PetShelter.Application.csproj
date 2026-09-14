@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <PackageReference Include="Npgsql" Version="10.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Npgsql" Version="10.0.3" />
+      <Folder Include="Services\ServiceInterfaces\" />
     </ItemGroup>
 
 </Project>

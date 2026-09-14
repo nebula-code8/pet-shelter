@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Uix", "PetShelte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Application", "PetShelter.Application\PetShelter.Application.csproj", "{234DD704-C698-432F-BF11-452A8A3B0B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.DB", "PetShelter.DB\PetShelter.DB.csproj", "{D338E6F9-F4FD-4090-B75B-33F667384D32}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{234DD704-C698-432F-BF11-452A8A3B0B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{234DD704-C698-432F-BF11-452A8A3B0B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{234DD704-C698-432F-BF11-452A8A3B0B31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D338E6F9-F4FD-4090-B75B-33F667384D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D338E6F9-F4FD-4090-B75B-33F667384D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D338E6F9-F4FD-4090-B75B-33F667384D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D338E6F9-F4FD-4090-B75B-33F667384D32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

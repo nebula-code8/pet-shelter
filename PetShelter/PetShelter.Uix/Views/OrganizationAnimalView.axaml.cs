@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PetShelter.Application.Repository;
 using PetShelter.Application.Services.ServiceInterfaces;
@@ -137,6 +138,21 @@ public partial class OrganizationAnimalView : UserControl
                 TextWrapping = Avalonia.Media.TextWrapping.Wrap
             });
 
+        Button adoptButton = new Button
+        {
+            Foreground = Brushes.Gray,
+            Content = "Adopt Animal",
+            HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
+            Margin = new Avalonia.Thickness(0, 10, 0, 0)
+        };
+
+        adoptButton.Click += (_, _) =>
+        {
+            throw new NotImplementedException();
+        };
+
+        panel.Children.Add(adoptButton);
+        
         card.Child = panel;
 
         return card;

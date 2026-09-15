@@ -53,4 +53,6 @@ public partial class MainWindow : Window
         MainContent.Content =
             new ClientHomeView(_loggedInUserId.Value);
     }
+    
+    
 }

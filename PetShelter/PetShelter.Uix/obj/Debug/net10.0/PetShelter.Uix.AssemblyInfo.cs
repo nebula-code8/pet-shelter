@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetShelter.Uix")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e170da0d42313214569e07da3c87d373e82f6cb0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e135a06118d36867f58c714b52d2d26c4329f20e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PetShelter.Uix")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetShelter.Uix")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

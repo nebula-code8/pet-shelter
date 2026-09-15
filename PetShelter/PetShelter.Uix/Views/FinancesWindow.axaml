@@ -1,0 +1,159 @@
+﻿<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="PetShelter.Uix.Views.FinancesWindow"
+    Width="1000"
+    Height="650"
+    Title="Finances"
+    Background="White">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto"
+          Margin="30">
+
+        <StackPanel Grid.Row="0"
+                    Spacing="8">
+
+            <TextBlock
+                Text="{Binding AssociationName}"
+                FontSize="26"
+                FontWeight="Bold"
+                Foreground="Black"/>
+
+            <TextBlock
+                Text="Finances"
+                FontSize="20"
+                Foreground="Black"/>
+
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                Margin="0,20,0,20"
+                Padding="20"
+                Background="#F7F7F7"
+                CornerRadius="8">
+
+            <Grid ColumnDefinitions="*,*">
+
+                <StackPanel Grid.Column="0"
+                            Spacing="5">
+
+                    <TextBlock
+                        Text="Account number"
+                        Foreground="Gray"/>
+
+                    <TextBlock
+                        Text="{Binding AccountNumber}"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Foreground="Black"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Spacing="5">
+
+                    <TextBlock
+                        Text="Current balance"
+                        Foreground="Gray"/>
+
+                    <TextBlock
+                        Text="{Binding BalanceText}"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Foreground="Black"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+        <Grid Grid.Row="2"
+              RowDefinitions="Auto,*">
+
+            <TextBlock
+                Grid.Row="0"
+                Text="Transaction history"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Foreground="Black"
+                Margin="0,0,0,10"/>
+
+            <DataGrid
+                Grid.Row="1"
+                ItemsSource="{Binding Transactions}"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                GridLinesVisibility="All"
+                Foreground="Black"
+                >
+                
+                
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn
+                        Header="Date"
+                        Binding="{Binding Date}"
+                        Width="100"/>
+
+                    <DataGridTextColumn
+                        Header="Type"
+                        Binding="{Binding Type}"
+                        Width="100"/>
+
+                    <DataGridTextColumn
+                        Header="Amount"
+                        Binding="{Binding Amount}"
+                        Width="100"/>
+
+                    <DataGridTextColumn
+                        Header="Source account"
+                        Binding="{Binding SourceAccount}"
+                        Width="180"/>
+
+                    <DataGridTextColumn
+                        Header="Destination account"
+                        Binding="{Binding DestinationAccount}"
+                        Width="180"/>
+
+                    <DataGridTextColumn
+                        Header="Purpose"
+                        Binding="{Binding Purpose}"
+                        Width="160"/>
+
+                    <DataGridTextColumn
+                        Header="Description"
+                        Binding="{Binding Description}"
+                        Width="*"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Grid>
+
+        <Grid Grid.Row="3"
+              ColumnDefinitions="Auto,*,Auto"
+              Margin="0,20,0,0">
+
+            <Button
+                Grid.Column="0"
+                Content="Back"
+                Width="100"
+                Click="BackButton_Click"
+                Background="White"
+                Foreground="Black"/>
+
+            <Button
+                Grid.Column="2"
+                Content="Add Expense"
+                Width="130"
+                IsEnabled="False"
+                Background="White"
+                Foreground="Black"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

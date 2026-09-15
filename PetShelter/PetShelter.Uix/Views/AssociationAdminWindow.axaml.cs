@@ -38,8 +38,19 @@ public partial class AssociationAdminWindow : Window
     {
     }
 
-    private void FinancesButton_Click(object? sender, RoutedEventArgs e)
+    private async void FinancesButton_Click(
+        object? sender,
+        RoutedEventArgs e)
     {
+        if (_viewModel.Association == null)
+            return;
+
+        FinancesWindow window = new(
+            _viewModel.Association.Id,
+            _viewModel.Association.Name
+        );
+
+        await window.ShowDialog(this);
     }
 
     private void LogoutButton_Click(object? sender, RoutedEventArgs e)

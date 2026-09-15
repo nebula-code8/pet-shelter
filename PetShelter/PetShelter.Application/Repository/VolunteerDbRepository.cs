@@ -159,6 +159,32 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
 
         return volunteerRows;
     }
+    
+    public bool UpdateStatus(long volunteerId, VolunteerStatus status)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              UPDATE volunteers
+                              SET status = @status
+                              WHERE user_id = @volunteerId;
+                              """;
+
+        AddParameter(
+            command,
+            "@status",
+            (int)status
+        );
+
+        AddParameter(
+            command,
+            "@volunteerId",
+            volunteerId
+        );
+
+        return command.ExecuteNonQuery() > 0;
+    }
 
     public Volunteer? GetById(long id)
     {
@@ -189,13 +215,56 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
                               """;
 
         AddParameter(command, "@id", id);
-
         using IDataReader reader = command.ExecuteReader();
-
         if (!reader.Read())
             return null;
 
         return MapVolunteer(reader);
+    }
+    
+    public List<Volunteer> GetByAssociationId(long associationId)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT
+                                  u.id,
+                                  u.name,
+                                  u.surname,
+                                  u.gender,
+                                  u.date_of_birth,
+                                  u.phone_number,
+                                  u.email,
+                                  u.password,
+                                  u.role,
+                                  u.address,
+                                  u.is_deleted,
+                                  v.association_id,
+                                  v.comment,
+                                  v.status
+                              FROM users u
+                              INNER JOIN volunteers v
+                                  ON u.id = v.user_id
+                              WHERE v.association_id = @associationId
+                                AND u.is_deleted = FALSE
+                              ORDER BY u.id;
+                              """;
+
+        AddParameter(
+            command,
+            "@associationId",
+            associationId
+        );
+
+        using IDataReader reader = command.ExecuteReader();
+        List<Volunteer> volunteers = new();
+        while (reader.Read())
+        {
+            volunteers.Add(MapVolunteer(reader));
+        }
+
+        return volunteers;
     }
 
     public List<Volunteer> GetAll()

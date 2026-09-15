@@ -24,6 +24,51 @@ public class VolunteerService : IVolunteerService
     {
         return _volunteerRepository.GetById(id);
     }
+    
+    public List<Volunteer> GetByAssociationId(long associationId)
+    {
+        return _volunteerRepository.GetByAssociationId(
+            associationId
+        );
+    }
+    
+    public void Approve(long volunteerId)
+    {
+        Volunteer? volunteer = _volunteerRepository.GetById(volunteerId);
+
+        if (volunteer == null)
+        {
+            throw new Exception("Volunteer was not found.");
+        }
+        if (volunteer.Status != VolunteerStatus.Pending)
+        {
+            throw new Exception("Only pending volunteer requests can be approved.");
+        }
+        if (!_volunteerRepository.UpdateStatus(volunteerId, VolunteerStatus.Approved))
+        {
+            throw new Exception("Volunteer status could not be updated.");
+            
+        }
+    }
+    
+    public void Reject(long volunteerId)
+    {
+        Volunteer? volunteer = _volunteerRepository.GetById(volunteerId);
+
+        if (volunteer == null)
+        {
+            throw new Exception("Volunteer was not found.");
+        }
+        if (volunteer.Status != VolunteerStatus.Pending)
+        {
+            throw new Exception("Only pending volunteer requests can be rejected.");
+        }
+
+        if (!_volunteerRepository.UpdateStatus(volunteerId, VolunteerStatus.Rejected))
+        {
+            throw new Exception("Volunteer status could not be updated.");
+        }
+    }
 
     private static void Validate(Volunteer volunteer)
     {

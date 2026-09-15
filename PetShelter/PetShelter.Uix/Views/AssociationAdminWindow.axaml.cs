@@ -12,16 +12,18 @@ public partial class AssociationAdminWindow : Window
     {
         InitializeComponent();
 
-        _viewModel =
-            new AssociationAdminViewModel(userId);
+        _viewModel = new AssociationAdminViewModel(userId);
 
         DataContext = _viewModel;
     }
 
-    private void VolunteersButton_Click(
-        object? sender,
-        RoutedEventArgs e)
+    private void VolunteersButton_Click(object? sender, RoutedEventArgs e)
     {
+        if (_viewModel.Association == null) return;
+        VolunteerManagementWindow window = new(_viewModel.UserId, _viewModel.Association.Id, _viewModel.Association.Name);
+        window.Show();
+
+        Close();
     }
 
     private void AnimalsButton_Click(

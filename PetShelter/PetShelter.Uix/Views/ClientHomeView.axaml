@@ -11,8 +11,8 @@
                 <Button Grid.Column="1" Content="Logout" Width="100" Height="35" Click="LogoutButton_Click" />
             </Grid>
         </Border> <!-- Main content -->
-        <Grid Grid.Row="1" Margin="30" ColumnDefinitions="350,*" ColumnSpacing="30"> <!-- User information -->
-            <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="25">
+        <Grid Grid.Row="1" Margin="30" ColumnDefinitions="*,3*" ColumnSpacing="30" x:Name="MainGrid"> <!-- User information -->
+            <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="25" x:Name="UserDataBorder">
                 <StackPanel Spacing="15">
                     <TextBlock Foreground="Gray" Text="My Information" FontSize="24" FontWeight="Bold" /> <Separator />
                     <StackPanel Spacing="5">
@@ -37,7 +37,8 @@
                         <TextBlock Foreground="Gray" x:Name="DateOfBirthTextBlock" />
                     </StackPanel>
                 </StackPanel>
-            </Border> <!-- Organizations --> <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="25">
+            </Border> <!-- Organizations --> 
+            <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="25">
                 <Grid RowDefinitions="Auto,*">
                     <TextBlock Text="Organizations" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" />
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">

@@ -73,4 +73,12 @@ public partial class LoginWindow : UserControl
         ErrorTextBlock.Text = message;
         ErrorTextBlock.IsVisible = true;
     }
+
+    private void GhostLogin_Click(object? sender, RoutedEventArgs e)
+    {
+        if (VisualRoot is MainWindow window)
+        {
+            window.ShowGhostHome();
+        }
+    }
 }

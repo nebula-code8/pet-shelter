@@ -53,6 +53,15 @@ public partial class MainWindow : Window
         MainContent.Content =
             new ClientHomeView(_loggedInUserId.Value);
     }
-    
-    
+
+    public void ShowGhostHome()
+    {
+        _loggedInUserId = null;
+        MainContent.Content = new ClientHomeView();
+    }
+
+    public bool IsGhost()
+    {
+        return _loggedInUserId == null;
+    }
 }

@@ -29,6 +29,24 @@ public partial class ClientHomeView : UserControl
         LoadOrganizations();
     }
 
+    public ClientHomeView()
+    {
+        InitializeComponent();
+        
+        _userService = Injector.CreateInstance<IUserService>();
+        _associationService = Injector.CreateInstance<IAssociationService>();
+        
+        HideUserDataSection();
+        LoadOrganizations();
+    }
+    
+    private void HideUserDataSection()
+    {
+        UserDataBorder.IsVisible = false;
+        MainGrid.ColumnDefinitions[0].Width = new GridLength(0);
+        MainGrid.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Star);
+    }
+
     private void LoadUser()
     {
         User? user = _userService.GetById(_userId);

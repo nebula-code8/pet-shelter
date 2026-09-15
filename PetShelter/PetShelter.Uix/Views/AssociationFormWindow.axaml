@@ -90,10 +90,21 @@
 
             <TextBox Text="{Binding Address, Mode=TwoWay}"/>
 
-            <!-- Показываем этот блок только при создании -->
+            
             <StackPanel IsVisible="{Binding IsCreateMode}"
                         Margin="0,25,0,0">
+                
+                <TextBlock Text="Bank Account"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="Black"
+                           Margin="0,0,0,10"/>
 
+                <TextBlock Classes="label"
+                           Text="Account number"/>
+
+                <TextBox Text="{Binding AccountNumber, Mode=TwoWay}"/>
+                
                 <TextBlock Text="Association Administrator"
                            FontSize="22"
                            FontWeight="Bold"

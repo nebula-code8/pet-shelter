@@ -12,6 +12,7 @@ public class AssociationFormViewModel : INotifyPropertyChanged
     private readonly IAssociationService _associationService;
     private readonly IUserService _userService;
     private readonly Association? _association;
+    private readonly IFinanceService _financeService;
 
     private string _errorMessage = "";
 
@@ -22,6 +23,8 @@ public class AssociationFormViewModel : INotifyPropertyChanged
     public string EstablishmentType { get; set; } = "";
     public string Description { get; set; } = "";
     public string Address { get; set; } = "";
+    
+    public string AccountNumber { get; set; } = "";
 
     public string AdminName { get; set; } = "";
     public string AdminSurname { get; set; } = "";
@@ -63,6 +66,9 @@ public class AssociationFormViewModel : INotifyPropertyChanged
 
         _userService =
             Injector.CreateInstance<IUserService>();
+        
+        _financeService =
+            Injector.CreateInstance<IFinanceService>();
     }
 
     public AssociationFormViewModel(Association association)
@@ -138,6 +144,12 @@ public class AssociationFormViewModel : INotifyPropertyChanged
             ErrorMessage = "Please fill in all administrator fields.";
             return false;
         }
+        
+        if (string.IsNullOrWhiteSpace(AccountNumber))
+        {
+            ErrorMessage = "Please enter the association bank account number.";
+            return false;
+        }
 
         if (!DateOnly.TryParseExact(
                 AdminDateOfBirth,
@@ -184,7 +196,13 @@ public class AssociationFormViewModel : INotifyPropertyChanged
             false
         );
 
-        _associationService.Insert(association);
+        long associationId =
+            _associationService.Insert(association);
+
+        _financeService.CreateBankAccount(
+            associationId,
+            AccountNumber
+        );
 
         return true;
     }

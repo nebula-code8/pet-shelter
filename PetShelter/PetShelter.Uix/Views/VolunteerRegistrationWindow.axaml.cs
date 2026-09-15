@@ -23,8 +23,8 @@ public partial class VolunteerRegistrationWindow : Window
         if (!_viewModel.Register())
             return;
 
-        LoginWindow loginWindow = new();
-        loginWindow.Show();
+        MainWindow mainWindow = new();
+        mainWindow.Show();
 
         Close();
     }
@@ -34,7 +34,8 @@ public partial class VolunteerRegistrationWindow : Window
         RoutedEventArgs e)
     {
         LoginWindow loginWindow = new();
-        loginWindow.Show();
+        MainWindow mainWindow = new();
+        mainWindow.Show();
 
         Close();
     }

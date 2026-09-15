@@ -56,50 +56,51 @@ public partial class LoginWindow : UserControl
             {
                 window.LoginSuccessful(userId);
             }
-        }
 
-        if (role == Role.Admin)
-        {
-            AdminWindow adminWindow = new(userId);
-            adminWindow.Show();
-            Close();
-            return;
-        }
-        
-        if (role == Role.AssociationAdmin)
-        {
-            AssociationAdminWindow associationAdminWindow = new(userId);
-            associationAdminWindow.Show();
-            Close();
-            return;
-        }
-        
-        if (role == Role.Volunteer)
-        {
-            Volunteer? volunteer = _volunteerService.GetById(userId);
-
-            if (volunteer == null)
+            if (role == Role.Admin)
             {
-                ShowError("Volunteer profile was not found.");
+                AdminWindow adminWindow = new(userId);
+                adminWindow.Show();
+                window.Close();
                 return;
             }
 
-            if (volunteer.Status == VolunteerStatus.Pending)
+            if (role == Role.AssociationAdmin)
             {
-                ShowError("Your volunteer request is still pending approval.");
+                AssociationAdminWindow associationAdminWindow = new(userId);
+                associationAdminWindow.Show();
+                window.Close();
                 return;
             }
 
-            if (volunteer.Status == VolunteerStatus.Rejected)
+            if (role == Role.Volunteer)
             {
-                ShowError("Your volunteer request has been rejected.");
+                Volunteer? volunteer = _volunteerService.GetById(userId);
+
+                if (volunteer == null)
+                {
+                    ShowError("Volunteer profile was not found.");
+                    return;
+                }
+
+                if (volunteer.Status == VolunteerStatus.Pending)
+                {
+                    ShowError("Your volunteer request is still pending approval.");
+                    return;
+                }
+
+                if (volunteer.Status == VolunteerStatus.Rejected)
+                {
+                    ShowError("Your volunteer request has been rejected.");
+                    return;
+                }
+
+                ShowError("Volunteer functionality is not implemented yet.");
                 return;
             }
 
-            ShowError("Volunteer functionality is not implemented yet.");
-            return;
+            ShowError("This user role is not supported yet.");
         }
-        ShowError("This user role is not supported yet.");
     }
 
     private void RegisterButton_Click(object? sender, RoutedEventArgs e)
@@ -116,8 +117,10 @@ public partial class LoginWindow : UserControl
     {
         VolunteerRegistrationWindow registrationWindow = new();
         registrationWindow.Show();
-
-        Close();
+        if (VisualRoot is MainWindow window)
+        {
+            window.Close();
+        }
     }
 
     private void ShowError(string message)

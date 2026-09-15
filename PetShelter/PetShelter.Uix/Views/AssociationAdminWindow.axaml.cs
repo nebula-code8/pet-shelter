@@ -55,8 +55,8 @@ public partial class AssociationAdminWindow : Window
 
     private void LogoutButton_Click(object? sender, RoutedEventArgs e)
     {
-        LoginWindow loginWindow = new();
-        loginWindow.Show();
+        MainWindow mainWindow = new();
+        mainWindow.Show();
 
         Close();
     }

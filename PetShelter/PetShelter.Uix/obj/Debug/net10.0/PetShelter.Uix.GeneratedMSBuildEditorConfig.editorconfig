@@ -9,7 +9,7 @@ build_property.AvaloniaNameGeneratorAttachDevTools = true
 build_property.AvaloniaUseCompiledBindingsByDefault = false
 build_property.AvaloniaMainPackageVersion = 11.3.22
 build_property.AvaloniaPreviewerNetCoreToolPath = /home/nebula/.nuget/packages/avalonia/11.3.22/buildTransitive//../tools/netstandard2.0/designer/Avalonia.Designer.HostApp.dll
-build_property.AvaloniaResourcePaths = /home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/App.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/MainWindow.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AnimalCard.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AnimalInfoWindow.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/ClientHomeView.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/LoginWindow.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/OrganizationAnimalView.axaml,/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/RegistrationWindow.axaml
+build_property.AvaloniaResourcePaths = 
 build_property.TargetFramework = net10.0
 build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
@@ -33,13 +33,31 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AdminWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AnimalCard.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AnimalInfoWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AssociationAdminWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AssociationFormWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/AssociationsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/ClientHomeView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/ExpenseWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/FinancesWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/LoginWindow.axaml]
@@ -49,4 +67,13 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/RegistrationWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/UsersWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/VolunteerRegistrationWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/Views/VolunteersWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

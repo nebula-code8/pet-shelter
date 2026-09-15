@@ -34,8 +34,8 @@ public partial class AdminWindow : Window
 
     private void LogoutButton_Click(object? sender, RoutedEventArgs e)
     {
-        LoginWindow loginWindow = new();
-        loginWindow.Show();
+        MainWindow mainWindow = new();
+        mainWindow.Show();
         Close();
     }
 }

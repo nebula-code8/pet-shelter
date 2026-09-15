@@ -40,10 +40,12 @@ public class FinancesViewModel
         LoadFinances();
     }
 
-    private void LoadFinances()
+    public void LoadFinances()
     {
         try
         {
+            ErrorMessage = null;
+
             Account =
                 _financeService.GetAccountByAssociationId(
                     AssociationId

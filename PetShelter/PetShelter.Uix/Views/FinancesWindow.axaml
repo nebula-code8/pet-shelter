@@ -148,9 +148,9 @@
                 Grid.Column="2"
                 Content="Add Expense"
                 Width="130"
-                IsEnabled="False"
                 Background="White"
-                Foreground="Black"/>
+                Foreground="Black"
+                Click="AddExpenseButton_Click"/>
 
         </Grid>
 

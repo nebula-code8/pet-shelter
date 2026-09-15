@@ -55,4 +55,9 @@ public class UserService : IUserService
     {
         return _userRepository.GetById(id);
     }
+    
+    public bool ExistsByEmail(string email)
+    {
+        return _userRepository.ExistsByEmail(email);
+    }
 }

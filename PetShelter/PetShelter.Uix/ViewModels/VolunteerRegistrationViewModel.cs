@@ -11,6 +11,7 @@ public class VolunteerRegistrationViewModel : INotifyPropertyChanged
 {
     private readonly IVolunteerService _volunteerService;
     private readonly IAssociationService _associationService;
+    private readonly IUserService _userService;
 
     private string _errorMessage = "";
 
@@ -52,6 +53,9 @@ public class VolunteerRegistrationViewModel : INotifyPropertyChanged
 
         _associationService =
             Injector.CreateInstance<IAssociationService>();
+
+        _userService =
+            Injector.CreateInstance<IUserService>();
 
         LoadAssociations();
     }
@@ -122,7 +126,18 @@ public class VolunteerRegistrationViewModel : INotifyPropertyChanged
 
         if (dateOfBirth > DateOnly.FromDateTime(DateTime.Today))
         {
-            ErrorMessage = "Date of birth cannot be in the future.";
+            ErrorMessage =
+                "Date of birth cannot be in the future.";
+
+            return false;
+        }
+
+        if (_userService.ExistsByEmail(
+                EmailAddress.Trim()))
+        {
+            ErrorMessage =
+                "A user with this email already exists.";
+
             return false;
         }
 

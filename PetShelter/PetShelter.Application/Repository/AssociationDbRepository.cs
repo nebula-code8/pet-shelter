@@ -216,4 +216,40 @@ public class AssociationDbRepository : BaseDbRepository, IAssociationRepository
             Convert.ToBoolean(reader["is_deleted"])
         );
     }
+    
+    public bool ExistsByEmail(
+        string email,
+        long? excludeId = null)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        if (excludeId == null)
+        {
+            command.CommandText = """
+                                  SELECT COUNT(*)
+                                  FROM associations
+                                  WHERE email = @email;
+                                  """;
+        }
+        else
+        {
+            command.CommandText = """
+                                  SELECT COUNT(*)
+                                  FROM associations
+                                  WHERE email = @email
+                                    AND id <> @excludeId;
+                                  """;
+
+            AddParameter(
+                command,
+                "@excludeId",
+                excludeId.Value
+            );
+        }
+
+        AddParameter(command, "@email", email);
+
+        return Convert.ToInt32(command.ExecuteScalar()) > 0;
+    }
 }

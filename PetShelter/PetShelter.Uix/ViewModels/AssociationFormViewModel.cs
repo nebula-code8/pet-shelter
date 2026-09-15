@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 using PetShelter.Application.Domain;
 using PetShelter.Application.Services;
@@ -17,19 +16,19 @@ public class AssociationFormViewModel : INotifyPropertyChanged
     private string _errorMessage = "";
 
     public string AssociationName { get; set; } = "";
-    public string DateOfEstablishment { get; set; } = "";
+    public DateTimeOffset? DateOfEstablishment { get; set; }
     public string PhoneNumber { get; set; } = "";
     public string EmailAddress { get; set; } = "";
     public string EstablishmentType { get; set; } = "";
     public string Description { get; set; } = "";
     public string Address { get; set; } = "";
-    
+
     public string AccountNumber { get; set; } = "";
 
     public string AdminName { get; set; } = "";
     public string AdminSurname { get; set; } = "";
     public string AdminGender { get; set; } = "Male";
-    public string AdminDateOfBirth { get; set; } = "";
+    public DateTimeOffset? AdminDateOfBirth { get; set; }
     public string AdminPhoneNumber { get; set; } = "";
     public string AdminEmailAddress { get; set; } = "";
     public string AdminPassword { get; set; } = "";
@@ -66,7 +65,7 @@ public class AssociationFormViewModel : INotifyPropertyChanged
 
         _userService =
             Injector.CreateInstance<IUserService>();
-        
+
         _financeService =
             Injector.CreateInstance<IFinanceService>();
     }
@@ -77,8 +76,11 @@ public class AssociationFormViewModel : INotifyPropertyChanged
         _association = association;
 
         AssociationName = association.Name;
-        DateOfEstablishment =
-            association.DateOfEstabishment.ToString("yyyy-MM-dd");
+        DateOfEstablishment = new DateTimeOffset(
+            association.DateOfEstabishment.ToDateTime(
+                TimeOnly.MinValue
+            )
+        );
         PhoneNumber = association.PhoneNumber;
         EmailAddress = association.EmailAddress;
         EstablishmentType = association.EstablishmentType;
@@ -91,7 +93,7 @@ public class AssociationFormViewModel : INotifyPropertyChanged
         ErrorMessage = "";
 
         if (string.IsNullOrWhiteSpace(AssociationName) ||
-            string.IsNullOrWhiteSpace(DateOfEstablishment) ||
+            DateOfEstablishment == null ||
             string.IsNullOrWhiteSpace(PhoneNumber) ||
             string.IsNullOrWhiteSpace(EmailAddress) ||
             string.IsNullOrWhiteSpace(EstablishmentType) ||
@@ -102,18 +104,10 @@ public class AssociationFormViewModel : INotifyPropertyChanged
             return false;
         }
 
-        if (!DateOnly.TryParseExact(
-                DateOfEstablishment,
-                "yyyy-MM-dd",
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out DateOnly establishmentDate))
-        {
-            ErrorMessage =
-                "Association date must be in yyyy-MM-dd format.";
-
-            return false;
-        }
+        DateOnly establishmentDate =
+            DateOnly.FromDateTime(
+                DateOfEstablishment.Value.DateTime
+            );
 
         try
         {
@@ -135,7 +129,7 @@ public class AssociationFormViewModel : INotifyPropertyChanged
     {
         if (string.IsNullOrWhiteSpace(AdminName) ||
             string.IsNullOrWhiteSpace(AdminSurname) ||
-            string.IsNullOrWhiteSpace(AdminDateOfBirth) ||
+            AdminDateOfBirth == null ||
             string.IsNullOrWhiteSpace(AdminPhoneNumber) ||
             string.IsNullOrWhiteSpace(AdminEmailAddress) ||
             string.IsNullOrWhiteSpace(AdminPassword) ||
@@ -144,22 +138,41 @@ public class AssociationFormViewModel : INotifyPropertyChanged
             ErrorMessage = "Please fill in all administrator fields.";
             return false;
         }
-        
+
         if (string.IsNullOrWhiteSpace(AccountNumber))
         {
             ErrorMessage = "Please enter the association bank account number.";
             return false;
         }
 
-        if (!DateOnly.TryParseExact(
-                AdminDateOfBirth,
-                "yyyy-MM-dd",
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out DateOnly adminDateOfBirth))
+        DateOnly adminDateOfBirth =
+            DateOnly.FromDateTime(
+                AdminDateOfBirth.Value.DateTime
+            );
+
+        if (_userService.ExistsByEmail(
+                AdminEmailAddress.Trim()))
         {
             ErrorMessage =
-                "Administrator date of birth must be in yyyy-MM-dd format.";
+                "A user with this email already exists.";
+
+            return false;
+        }
+
+        if (_associationService.ExistsByEmail(
+                EmailAddress.Trim()))
+        {
+            ErrorMessage =
+                "An association with this email already exists.";
+
+            return false;
+        }
+
+        if (_financeService.AccountNumberExists(
+                AccountNumber.Trim()))
+        {
+            ErrorMessage =
+                "This bank account number is already in use.";
 
             return false;
         }
@@ -170,28 +183,29 @@ public class AssociationFormViewModel : INotifyPropertyChanged
                 : Gender.Male;
 
         User admin = new(
-            AdminName,
-            AdminSurname,
+            AdminName.Trim(),
+            AdminSurname.Trim(),
             gender,
             adminDateOfBirth,
-            AdminPhoneNumber,
-            AdminEmailAddress,
+            AdminPhoneNumber.Trim(),
+            AdminEmailAddress.Trim(),
             AdminPassword,
             Role.AssociationAdmin,
-            AdminAddress,
+            AdminAddress.Trim(),
             false
         );
 
-        long adminId = _userService.Insert(admin);
+        long adminId =
+            _userService.Insert(admin);
 
         Association association = new(
-            AssociationName,
+            AssociationName.Trim(),
             establishmentDate,
-            PhoneNumber,
-            EmailAddress,
-            EstablishmentType,
-            Description,
-            Address,
+            PhoneNumber.Trim(),
+            EmailAddress.Trim(),
+            EstablishmentType.Trim(),
+            Description.Trim(),
+            Address.Trim(),
             adminId,
             false
         );
@@ -201,7 +215,7 @@ public class AssociationFormViewModel : INotifyPropertyChanged
 
         _financeService.CreateBankAccount(
             associationId,
-            AccountNumber
+            AccountNumber.Trim()
         );
 
         return true;
@@ -212,15 +226,25 @@ public class AssociationFormViewModel : INotifyPropertyChanged
         if (_association == null)
             return false;
 
+        if (_associationService.ExistsByEmail(
+                EmailAddress.Trim(),
+                _association.Id))
+        {
+            ErrorMessage =
+                "An association with this email already exists.";
+
+            return false;
+        }
+
         Association updatedAssociation = new(
             _association.Id,
-            AssociationName,
+            AssociationName.Trim(),
             establishmentDate,
-            PhoneNumber,
-            EmailAddress,
-            EstablishmentType,
-            Description,
-            Address,
+            PhoneNumber.Trim(),
+            EmailAddress.Trim(),
+            EstablishmentType.Trim(),
+            Description.Trim(),
+            Address.Trim(),
             _association.AdminId,
             _association.IsDeleted
         );

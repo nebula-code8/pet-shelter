@@ -8,5 +8,6 @@ public interface IAssociationRepository
     Association? GetByAdminId(long adminId);
     public List<Association> GetAll();
     public bool Delete(long id);
+    bool ExistsByEmail(string email, long? excludeId = null);
     
 }

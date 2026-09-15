@@ -7,4 +7,5 @@ public interface IUserRepository
     public int Update(User user);
     public User? GetById(long id);
     public List<User> GetAll();
+    bool ExistsByEmail(string email);
 }

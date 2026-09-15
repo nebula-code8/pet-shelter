@@ -8,4 +8,5 @@ public interface IUserService
     long Insert(User user);
     List<User> GetAll();
     User GetById(long id);
+    bool ExistsByEmail(string email);
 }

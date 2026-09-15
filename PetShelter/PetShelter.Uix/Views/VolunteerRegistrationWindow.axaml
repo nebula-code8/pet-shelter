@@ -9,7 +9,8 @@
         MinWidth="550"
         MinHeight="650"
         Title="Volunteer Registration"
-        Background="White">
+        Background="White"
+        RequestedThemeVariant="Light">
 
     <Window.Styles>
 

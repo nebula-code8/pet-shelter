@@ -42,9 +42,7 @@ public class VolunteersViewModel :
         }
     }
 
-    public VolunteersViewModel(
-        long associationId,
-        string associationName)
+    public VolunteersViewModel(long associationId, string associationName)
     {
         _associationId = associationId;
         AssociationName = associationName;
@@ -122,8 +120,7 @@ public class VolunteersViewModel :
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private void OnPropertyChanged(
-        [CallerMemberName] string? propertyName = null)
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

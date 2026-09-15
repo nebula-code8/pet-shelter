@@ -101,6 +101,86 @@ VALUES
     );
 
 -- =========================================================
+-- BANK ACCOUNTS
+-- =========================================================
+
+INSERT INTO bank_accounts
+(association_id, account_number, balance)
+VALUES
+    (1, '160-1000000000001-01', 50000.00),
+    (2, '160-1000000000002-02', 75000.00),
+    (3, '160-1000000000003-03', 40000.00);
+
+-- =========================================================
+-- BANK TRANSACTIONS
+--
+-- transaction_type:
+-- 0 = DONATION
+-- 1 = EXPENSE
+-- =========================================================
+
+INSERT INTO bank_transactions
+(
+    bank_account_id,
+    transaction_type,
+    amount,
+    transaction_date,
+    counterparty_account,
+    purpose,
+    description
+)
+VALUES
+    (
+        1,
+        0,
+        20000.00,
+        '2026-09-01',
+        '160-3000000000001-01',
+        'Donation',
+        'Donation for animal care'
+    ),
+
+    (
+        1,
+        1,
+        5000.00,
+        '2026-09-03',
+        '160-2000000000001-01',
+        'Veterinary treatment',
+        'Treatment for rescued dog'
+    ),
+
+    (
+        2,
+        0,
+        30000.00,
+        '2026-09-02',
+        '160-3000000000002-02',
+        'Donation',
+        'Donation for animal food'
+    ),
+
+    (
+        2,
+        1,
+        8000.00,
+        '2026-09-05',
+        '160-2000000000002-02',
+        'Animal food',
+        'Purchase of dog and cat food'
+    ),
+
+    (
+        3,
+        0,
+        15000.00,
+        '2026-09-04',
+        NULL,
+        'Donation',
+        'Anonymous donation'
+    );
+
+-- =========================================================
 -- VOLUNTEERS
 --
 -- status:

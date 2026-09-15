@@ -20,6 +20,7 @@
                 <Button Content="Register as Client" Height="42" Foreground="Gray" Click="RegisterButton_Click" />
                 <Button Content="Continue as Ghost" Height="42" Foreground="Gray" Click="GhostLogin_Click"
                         x:Name="GhostLoginButton" />
+                <Button Content="Register as Volunteer" Height="42" Foreground="Gray" Click="RegisterVolunteerButton_Click" />
             </StackPanel>
         </Border>
     </Grid>

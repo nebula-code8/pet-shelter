@@ -4,5 +4,10 @@ namespace PetShelter.Application.Services.ServiceInterfaces;
 
 public interface IAssociationService
 {
-    public List<Association> GetAll();
+    long Insert(Association association);
+    void Update(Association association);
+    Association? GetById(long id);
+    Association? GetByAdminId(long adminId);
+    List<Association> GetAll();
+    void Delete(long id);
 }

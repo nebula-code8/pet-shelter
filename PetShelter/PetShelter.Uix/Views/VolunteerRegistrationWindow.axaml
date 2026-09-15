@@ -1,0 +1,185 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="PetShelter.Uix.Views.VolunteerRegistrationWindow"
+        Width="650"
+        Height="850"
+        MinWidth="550"
+        MinHeight="650"
+        Title="Volunteer Registration"
+        Background="White">
+
+    <Window.Styles>
+
+        <Style Selector="TextBlock.label">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,7,0,3"/>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.action">
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.action:pointerover">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.action:pressed">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+    </Window.Styles>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <Border Width="520"
+                Margin="0,30"
+                Padding="35"
+                Background="#F7F7F7"
+                BorderBrush="#D9D9D9"
+                BorderThickness="1"
+                CornerRadius="12"
+                HorizontalAlignment="Center">
+
+            <StackPanel>
+
+                <TextBlock Text="Volunteer Registration"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="Black"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,5"/>
+
+                <TextBlock Text="Send a request to join an association"
+                           FontSize="15"
+                           Foreground="#555555"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <TextBlock Classes="label"
+                           Text="Name"/>
+
+                <TextBox Text="{Binding Name, Mode=TwoWay}"
+                         Watermark="Enter your name"/>
+
+                <TextBlock Classes="label"
+                           Text="Surname"/>
+
+                <TextBox Text="{Binding Surname, Mode=TwoWay}"
+                         Watermark="Enter your surname"/>
+
+                <TextBlock Classes="label"
+                           Text="Gender"/>
+
+                <ComboBox ItemsSource="{Binding Genders}"
+                          SelectedItem="{Binding SelectedGender, Mode=TwoWay}"
+                          Background="White"
+                          Foreground="Black"
+                          PlaceholderText="Select gender"/>
+
+                <TextBlock Classes="label"
+                           Text="Date of birth"/>
+
+                <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
+
+                <TextBlock Classes="label"
+                           Text="Phone number"/>
+
+                <TextBox Text="{Binding PhoneNumber, Mode=TwoWay}"
+                         Watermark="Enter your phone number"/>
+
+                <TextBlock Classes="label"
+                           Text="Email"/>
+
+                <TextBox Text="{Binding EmailAddress, Mode=TwoWay}"
+                         Watermark="Enter your email"/>
+
+                <TextBlock Classes="label"
+                           Text="Address"/>
+
+                <TextBox Text="{Binding Address, Mode=TwoWay}"
+                         Watermark="Enter your address"/>
+
+                <TextBlock Classes="label"
+                           Text="Password"/>
+
+                <TextBox Text="{Binding Password, Mode=TwoWay}"
+                         PasswordChar="●"
+                         Watermark="Enter your password"/>
+
+                <TextBlock Classes="label"
+                           Text="Confirm password"/>
+
+                <TextBox Text="{Binding ConfirmPassword, Mode=TwoWay}"
+                         PasswordChar="●"
+                         Watermark="Repeat your password"/>
+
+                <TextBlock Classes="label"
+                           Text="Association"/>
+
+                <ComboBox ItemsSource="{Binding Associations}"
+                          SelectedItem="{Binding SelectedAssociation, Mode=TwoWay}"
+                          Background="White"
+                          Foreground="Black"
+                          PlaceholderText="Select association">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"
+                                       Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+
+                <TextBlock Classes="label"
+                           Text="Why do you want to volunteer?"/>
+
+                <TextBox Text="{Binding Comment, Mode=TwoWay}"
+                         Watermark="Write a short message"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Height="90"/>
+
+                <TextBlock Text="{Binding ErrorMessage}"
+                           Foreground="Red"
+                           TextWrapping="Wrap"
+                           Margin="0,15,0,0"/>
+
+                <Button Classes="action"
+                        Content="Send Request"
+                        Margin="0,20,0,0"
+                        Click="RegisterButton_Click"/>
+
+                <Button Classes="action"
+                        Content="Back to Login"
+                        Margin="0,10,0,0"
+                        Click="BackButton_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </ScrollViewer>
+
+</Window>

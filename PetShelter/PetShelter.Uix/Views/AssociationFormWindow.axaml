@@ -1,0 +1,183 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="PetShelter.Uix.Views.AssociationFormWindow"
+        Width="700"
+        Height="800"
+        MinWidth="600"
+        MinHeight="600"
+        Title="{Binding WindowTitle}"
+        Background="White">
+
+    <Window.Styles>
+
+        <Style Selector="TextBlock.label">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,8,0,4"/>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.action">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.action:pointerover">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+    </Window.Styles>
+
+    <ScrollViewer>
+        <StackPanel Margin="35"
+                    Spacing="3">
+
+            <TextBlock Text="{Binding WindowTitle}"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Classes="label"
+                       Text="Association name"/>
+
+            <TextBox Text="{Binding AssociationName, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Date of establishment (yyyy-MM-dd)"/>
+
+            <TextBox Text="{Binding DateOfEstablishment, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Phone number"/>
+
+            <TextBox Text="{Binding PhoneNumber, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Email"/>
+
+            <TextBox Text="{Binding EmailAddress, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Type"/>
+
+            <TextBox Text="{Binding EstablishmentType, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Description"/>
+
+            <TextBox Text="{Binding Description, Mode=TwoWay}"
+                     AcceptsReturn="True"
+                     Height="80"
+                     TextWrapping="Wrap"/>
+
+            <TextBlock Classes="label"
+                       Text="Address"/>
+
+            <TextBox Text="{Binding Address, Mode=TwoWay}"/>
+
+            
+            <StackPanel IsVisible="{Binding IsCreateMode}"
+                        Margin="0,25,0,0">
+                
+                <TextBlock Text="Bank Account"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="Black"
+                           Margin="0,0,0,10"/>
+
+                <TextBlock Classes="label"
+                           Text="Account number"/>
+
+                <TextBox Text="{Binding AccountNumber, Mode=TwoWay}"/>
+                
+                <TextBlock Text="Association Administrator"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="Black"
+                           Margin="0,0,0,10"/>
+
+                <TextBlock Classes="label"
+                           Text="Name"/>
+
+                <TextBox Text="{Binding AdminName, Mode=TwoWay}"/>
+
+                <TextBlock Classes="label"
+                           Text="Surname"/>
+
+                <TextBox Text="{Binding AdminSurname, Mode=TwoWay}"/>
+
+                <TextBlock Classes="label"
+                           Text="Gender"/>
+
+                <ComboBox ItemsSource="{Binding Genders}"
+                          SelectedItem="{Binding AdminGender, Mode=TwoWay}"
+                          Background="White"
+                          Foreground="Black"/>
+
+                <TextBlock Classes="label"
+                           Text="Date of birth (yyyy-MM-dd)"/>
+
+                <TextBox Text="{Binding AdminDateOfBirth, Mode=TwoWay}"/>
+
+                <TextBlock Classes="label"
+                           Text="Phone number"/>
+
+                <TextBox Text="{Binding AdminPhoneNumber, Mode=TwoWay}"/>
+
+                <TextBlock Classes="label"
+                           Text="Email"/>
+
+                <TextBox Text="{Binding AdminEmailAddress, Mode=TwoWay}"/>
+
+                <TextBlock Classes="label"
+                           Text="Password"/>
+
+                <TextBox Text="{Binding AdminPassword, Mode=TwoWay}"
+                         PasswordChar="*"/>
+
+                <TextBlock Classes="label"
+                           Text="Address"/>
+
+                <TextBox Text="{Binding AdminAddress, Mode=TwoWay}"/>
+
+            </StackPanel>
+
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="Red"
+                       TextWrapping="Wrap"
+                       Margin="0,20,0,5"/>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="10"
+                        Margin="0,15,0,20">
+
+                <Button Classes="action"
+                        Content="Cancel"
+                        Click="CancelButton_Click"/>
+
+                <Button Classes="action"
+                        Content="{Binding SaveButtonText}"
+                        Click="SaveButton_Click"/>
+
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

@@ -1,0 +1,103 @@
+﻿<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="PetShelter.Uix.Views.ExpenseWindow"
+    Width="500"
+    Height="600"
+    Title="Add Expense"
+    Background="White"
+    WindowStartupLocation="CenterOwner"
+    RequestedThemeVariant="Light">
+
+    <ScrollViewer>
+        <StackPanel
+            Margin="30"
+            Spacing="12">
+
+            <TextBlock
+                Text="Add Expense"
+                FontSize="26"
+                FontWeight="Bold"
+                Foreground="Black"/>
+
+            <TextBlock
+                Text="Source account"
+                Foreground="Black"/>
+
+            <TextBox
+                Text="{Binding SourceAccount}"
+                IsReadOnly="True"
+                Foreground="Black"
+                Background="#F7F7F7"/>
+
+            <TextBlock
+                Text="Destination account"
+                Foreground="Black"/>
+
+            <TextBox
+                Text="{Binding DestinationAccount}"
+                Foreground="Black"/>
+
+            <TextBlock
+                Text="Amount"
+                Foreground="Black"/>
+
+            <TextBox
+                Text="{Binding Amount}"
+                Foreground="Black"/>
+
+            <TextBlock
+                Text="Date"
+                Foreground="Black"/>
+
+            <DatePicker
+                SelectedDate="{Binding Date}"/>
+
+            <TextBlock
+                Text="Purpose"
+                Foreground="Black"/>
+
+            <TextBox
+                Text="{Binding Purpose}"
+                Foreground="Black"/>
+
+            <TextBlock
+                Text="Description"
+                Foreground="Black"/>
+
+            <TextBox
+                Text="{Binding Description}"
+                AcceptsReturn="True"
+                Height="80"
+                Foreground="Black"/>
+
+            <TextBlock
+                Text="{Binding ErrorMessage}"
+                Foreground="Red"
+                TextWrapping="Wrap"/>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                Margin="0,10,0,0">
+
+                <Button
+                    Grid.Column="0"
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    Background="White"
+                    Foreground="Black"/>
+
+                <Button
+                    Grid.Column="1"
+                    Content="Add Expense"
+                    Click="AddExpenseButton_Click"
+                    Background="White"
+                    Foreground="Black"/>
+
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

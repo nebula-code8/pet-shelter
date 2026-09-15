@@ -4,7 +4,9 @@ public interface IVolunteerRepository
 {
     public long Insert(Volunteer volunteer);
     public int Update(Volunteer volunteer);
+    bool UpdateStatus(long volunteerId, VolunteerStatus status);
     public Volunteer? GetById(long id);
+    List<Volunteer> GetByAssociationId(long associationId);
     public List<Volunteer> GetAll();
     public bool Delete(long id);
 }

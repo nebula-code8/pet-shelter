@@ -12,15 +12,15 @@
         <PackageReference Include="Avalonia.Desktop" Version="11.*"/>
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.*"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.*"/>
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.8"/>
-        <Folder Include="ViewModels\"/>
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.8" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\PetShelter.Application\PetShelter.Application.csproj"/>
+      <ProjectReference Include="..\PetShelter.Application\PetShelter.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="appsettings.json" />
         <Content Include="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>

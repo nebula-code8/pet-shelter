@@ -4,15 +4,15 @@ using PetShelter.Application.Services.ServiceInterfaces;
 
 namespace PetShelter.Application.Services;
 
-public class UserService: IUserService
+public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    
+
     public UserService()
     {
         _userRepository = Injector.CreateInstance<IUserRepository>();
     }
-    
+
     public void Insert(User user)
     {
         if (string.IsNullOrWhiteSpace(user.Name) ||
@@ -24,6 +24,7 @@ public class UserService: IUserService
         {
             throw new Exception("Please fill in all fields");
         }
+
         try
         {
             long userId = _userRepository.Insert(user);
@@ -42,5 +43,15 @@ public class UserService: IUserService
     {
         var result = _userRepository.AuthenticateUser(email, password);
         return result;
+    }
+
+    public List<User> GetAll()
+    {
+        return _userRepository.GetAll().Where(u => u.IsDeleted == false).ToList();
+    }
+
+    public User GetById(long id)
+    {
+        return _userRepository.GetById(id);
     }
 }

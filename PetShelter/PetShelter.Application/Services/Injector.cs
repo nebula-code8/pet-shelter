@@ -21,7 +21,7 @@ public class Injector
         { typeof(IUserService), () => new UserService() },
         { typeof(IVolunteerService), () => new VolunteerService() }
     };
-    
+
     public static T CreateInstance<T>()
     {
         Type type = typeof(T);

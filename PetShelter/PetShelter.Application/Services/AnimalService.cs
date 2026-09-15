@@ -4,10 +4,11 @@ using PetShelter.Application.Services.ServiceInterfaces;
 
 namespace PetShelter.Application.Services;
 
-public class AnimalService: IAnimalService
+public class AnimalService : IAnimalService
 {
     private readonly IAnimalRepository _animalRepository;
-    public  AnimalService()
+
+    public AnimalService()
     {
         _animalRepository = Injector.CreateInstance<IAnimalRepository>();
     }

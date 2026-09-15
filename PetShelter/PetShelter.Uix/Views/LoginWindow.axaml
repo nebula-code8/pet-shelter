@@ -1,10 +1,9 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="PetShelter.Uix.Views.LoginWindow"
-        Title="LoginWindow">
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PetShelter.Uix.Views.LoginWindow">
     <Grid Background="#F5F5F5">
         <Border Width="400" Padding="35" Background="White" CornerRadius="12" HorizontalAlignment="Center"
                 VerticalAlignment="Center">
@@ -21,4 +20,4 @@
             </StackPanel>
         </Border>
     </Grid>
-</Window>
+</UserControl>

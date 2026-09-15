@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "13E1p/MoZUA=",
+  "dgSpecHash": "y6UoFUgSou0=",
   "success": true,
   "projectFilePath": "/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/PetShelter.Uix.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "/home/nebula/.nuget/packages/skiasharp.nativeassets.macos/2.88.9/skiasharp.nativeassets.macos.2.88.9.nupkg.sha512",
     "/home/nebula/.nuget/packages/skiasharp.nativeassets.webassembly/2.88.9/skiasharp.nativeassets.webassembly.2.88.9.nupkg.sha512",
     "/home/nebula/.nuget/packages/skiasharp.nativeassets.win32/2.88.9/skiasharp.nativeassets.win32.2.88.9.nupkg.sha512",
+    "/home/nebula/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
     "/home/nebula/.nuget/packages/tmds.dbus.protocol/0.21.3/tmds.dbus.protocol.0.21.3.nupkg.sha512",
     "/home/nebula/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.11/microsoft.aspnetcore.app.ref.10.0.11.nupkg.sha512"
   ],

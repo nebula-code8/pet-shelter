@@ -9,7 +9,7 @@ using PetShelter.Application.Services.ServiceInterfaces;
 
 namespace PetShelter.Uix.Views;
 
-public partial class LoginWindow : Window
+public partial class LoginWindow : UserControl
 {
     private readonly IUserService _userService;
 
@@ -18,7 +18,7 @@ public partial class LoginWindow : Window
         InitializeComponent();
         _userService = Injector.CreateInstance<IUserService>();
     }
-    
+
     private void LoginButton_Click(object? sender, RoutedEventArgs e)
     {
         string email = EmailTextBox.Text ?? "";
@@ -39,7 +39,17 @@ public partial class LoginWindow : Window
         long userId = result.Value.Id;
         Role role = result.Value.Role;
         ErrorTextBlock.IsVisible =
-            false; // TODO:
+            false; 
+        
+        if (VisualRoot is MainWindow window)
+        {
+            if (role == Role.Client)
+            {
+                window.ShowClientHome(userId);
+            }
+        }
+        
+        // TODO:
         // Navigate to the appropriate page depending on the role.
         // // // Example:
         // // // if (role == Role.Client)
@@ -52,14 +62,15 @@ public partial class LoginWindow : Window
 
     private void RegisterButton_Click(object? sender, RoutedEventArgs e)
     {
-        RegistrationWindow registrationWindow = new();
-        registrationWindow.Show();
-        this.Close();
+        if (VisualRoot is MainWindow window)
+        {
+            window.ShowRegistration();
+        }
     }
 
     private void ShowError(string message)
     {
-        ErrorTextBlock.Text = message; ErrorTextBlock.IsVisible = true; 
-        
-    } 
+        ErrorTextBlock.Text = message;
+        ErrorTextBlock.IsVisible = true;
+    }
 }

@@ -78,3 +78,4 @@
 /home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/obj/Debug/net10.0/PetShelt.4B58DED2.Up2Date
 /home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/obj/Debug/net10.0/PetShelter.Uix.genruntimeconfig.cache
 /home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/obj/Debug/net10.0/ref/PetShelter.Uix.dll
+/home/nebula/Projects/pet-shelter/pet-shelter/PetShelter/PetShelter.Uix/bin/Debug/net10.0/appsettings.json

@@ -4,8 +4,12 @@
     <option name="projectPerEditor">
       <map>
         <entry key="PetShelter.Uix/App.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+        <entry key="PetShelter.Uix/Views/ClientHomeView.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
         <entry key="PetShelter.Uix/Views/LoginWindow.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+        <entry key="PetShelter.Uix/Views/MainWindow.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+        <entry key="PetShelter.Uix/Views/OrganizationAnimalView.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
         <entry key="PetShelter.Uix/Views/RegistrationWindow.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
+        <entry key="PetShelter.Uix/Views/jabathehut.axaml" value="PetShelter.Uix/PetShelter.Uix.csproj" />
       </map>
     </option>
   </component>

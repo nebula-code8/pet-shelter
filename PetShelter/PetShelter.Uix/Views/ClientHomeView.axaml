@@ -7,8 +7,8 @@
     <Grid Background="#F5F5F5" RowDefinitions="Auto,*"> <!-- Header -->
         <Border Grid.Row="0" Background="White" Padding="25,15">
             <Grid ColumnDefinitions="*,Auto">
-                <TextBlock Text="Pet Shelter" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Grid.Column="1" Content="Logout" Width="100" Height="35" Click="LogoutButton_Click" />
+                <TextBlock Foreground="Gray" Text="Pet Shelter" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" />
+                <Button Grid.Column="1" Foreground="Gray" Content="Logout" Width="100" Height="35" Click="LogoutButton_Click" />
             </Grid>
         </Border> <!-- Main content -->
         <Grid Grid.Row="1" Margin="30" ColumnDefinitions="*,3*" ColumnSpacing="30" x:Name="MainGrid"> <!-- User information -->

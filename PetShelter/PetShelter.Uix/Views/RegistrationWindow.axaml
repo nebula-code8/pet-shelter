@@ -51,7 +51,7 @@
 
                     <!-- Gender -->
 
-                    <TextBlock Text="Gender" />
+                    <TextBlock Foreground="Gray" Text="Gender" />
 
                     <ComboBox
                         x:Name="GenderComboBox"
@@ -71,7 +71,7 @@
 
                     <!-- Phone -->
 
-                    <TextBlock Text="Phone number" />
+                    <TextBlock Foreground="Gray" Text="Phone number" />
 
                     <TextBox
                         x:Name="PhoneTextBox"
@@ -79,7 +79,7 @@
 
                     <!-- Email -->
 
-                    <TextBlock Text="Email" />
+                    <TextBlock Foreground="Gray" Text="Email" />
 
                     <TextBox
                         x:Name="EmailTextBox"
@@ -87,7 +87,7 @@
 
                     <!-- Address -->
 
-                    <TextBlock Text="Address" />
+                    <TextBlock Foreground="Gray" Text="Address" />
 
                     <TextBox
                         x:Name="AddressTextBox"
@@ -95,7 +95,7 @@
 
                     <!-- Password -->
 
-                    <TextBlock Text="Password" />
+                    <TextBlock Foreground="Gray" Text="Password" />
 
                     <TextBox
                         x:Name="PasswordTextBox"
@@ -104,7 +104,7 @@
 
                     <!-- Confirm password -->
 
-                    <TextBlock Text="Confirm password" />
+                    <TextBlock Foreground="Gray" Text="Confirm password" />
 
                     <TextBox
                         x:Name="ConfirmPasswordTextBox"

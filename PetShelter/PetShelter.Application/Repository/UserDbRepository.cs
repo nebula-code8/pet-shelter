@@ -47,7 +47,8 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   phone_number,
                                   email,
                                   password,
-                                  role
+                                  role,
+                                  address
                               )
                               VALUES
                               (
@@ -58,7 +59,8 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   @phoneNumber,
                                   @email,
                                   @password,
-                                  @role
+                                  @role,
+                                  @address
                               )
                               RETURNING id;
                               """;
@@ -71,6 +73,7 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         AddParameter(command, "@email", user.EmailAddress);
         AddParameter(command, "@password", user.Password);
         AddParameter(command, "@role", (int)user.Role);
+        AddParameter(command, "@address", user.Address);
 
         return Convert.ToInt64(command.ExecuteScalar());
     }
@@ -90,7 +93,9 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   phone_number = @phoneNumber,
                                   email = @email,
                                   password = @password,
-                                  role = @role
+                                  role = @role,
+                                  address = @address
+                                  is_deleted = @is_deleted
                               WHERE id = @id;
                               """;
 
@@ -103,6 +108,8 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         AddParameter(command, "@password", user.Password);
         AddParameter(command, "@role", (int)user.Role);
         AddParameter(command, "@id", user.Id);
+        AddParameter(command, "@address", user.Address);
+        AddParameter(command, "@is_deleted", user.IsDeleted);
 
         return command.ExecuteNonQuery();
     }

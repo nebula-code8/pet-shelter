@@ -7,7 +7,8 @@ public class BankTransaction
     public TransactionType Type { get; private set; }
     public decimal Amount { get; private set; }
     public DateOnly Date { get; private set; }
-    public string? CounterpartyAccount { get; private set; }
+    public string SourceAccount { get; private set; }
+    public string DestinationAccount { get; private set; }
     public string Purpose { get; private set; }
     public string? Description { get; private set; }
 
@@ -16,7 +17,8 @@ public class BankTransaction
         TransactionType type,
         decimal amount,
         DateOnly date,
-        string? counterpartyAccount,
+        string sourceAccount,
+        string destinationAccount,
         string purpose,
         string? description)
     {
@@ -24,7 +26,8 @@ public class BankTransaction
         Type = type;
         Amount = amount;
         Date = date;
-        CounterpartyAccount = counterpartyAccount;
+        SourceAccount = sourceAccount;
+        DestinationAccount = destinationAccount;
         Purpose = purpose;
         Description = description;
     }
@@ -35,7 +38,8 @@ public class BankTransaction
         TransactionType type,
         decimal amount,
         DateOnly date,
-        string? counterpartyAccount,
+        string sourceAccount,
+        string destinationAccount,
         string purpose,
         string? description)
         : this(
@@ -43,7 +47,8 @@ public class BankTransaction
             type,
             amount,
             date,
-            counterpartyAccount,
+            sourceAccount,
+            destinationAccount,
             purpose,
             description)
     {

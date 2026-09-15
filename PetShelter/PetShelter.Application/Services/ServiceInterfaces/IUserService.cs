@@ -7,4 +7,5 @@ public interface IUserService
     (long Id, Role Role)? AuthenticateUser(string email, string password);
     long Insert(User user);
     List<User> GetAll();
+    bool ExistsByEmail(string email);
 }

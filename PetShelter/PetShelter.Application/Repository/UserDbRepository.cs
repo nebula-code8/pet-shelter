@@ -210,4 +210,20 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
             Convert.ToBoolean(reader["is_deleted"])
         );
     }
+    
+    public bool ExistsByEmail(string email)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT COUNT(*)
+                              FROM users
+                              WHERE email = @email;
+                              """;
+
+        AddParameter(command, "@email", email);
+
+        return Convert.ToInt32(command.ExecuteScalar()) > 0;
+    }
 }

@@ -49,4 +49,9 @@ public class UserService: IUserService
     {
         return _userRepository.GetAll();
     }
+    
+    public bool ExistsByEmail(string email)
+    {
+        return _userRepository.ExistsByEmail(email);
+    }
 }

@@ -89,4 +89,25 @@ public class BankAccountDbRepository :
             Convert.ToDecimal(reader["balance"])
         );
     }
+    
+    public bool ExistsByAccountNumber(
+        string accountNumber)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT COUNT(*)
+                              FROM bank_accounts
+                              WHERE account_number = @accountNumber;
+                              """;
+
+        AddParameter(
+            command,
+            "@accountNumber",
+            accountNumber
+        );
+
+        return Convert.ToInt32(command.ExecuteScalar()) > 0;
+    }
 }

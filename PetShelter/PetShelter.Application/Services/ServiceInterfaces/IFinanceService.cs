@@ -34,4 +34,6 @@ public interface IFinanceService
         string purpose,
         string? description
     );
+    
+    bool AccountNumberExists(string accountNumber);
 }

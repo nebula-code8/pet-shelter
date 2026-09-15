@@ -253,4 +253,11 @@ public class FinanceService : IFinanceService
             ? null
             : value.Trim();
     }
+    
+    public bool AccountNumberExists(
+        string accountNumber)
+    {
+        return _bankAccountRepository
+            .ExistsByAccountNumber(accountNumber);
+    }
 }

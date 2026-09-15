@@ -65,4 +65,14 @@ public class AssociationService : IAssociationService
             throw new Exception("Please fill in all fields.");
         }
     }
+    
+    public bool ExistsByEmail(
+        string email,
+        long? excludeId = null)
+    {
+        return _associationRepository.ExistsByEmail(
+            email,
+            excludeId
+        );
+    }
 }

@@ -5,7 +5,8 @@
     Width="1000"
     Height="650"
     Title="Finances"
-    Background="White">
+    Background="White"
+    RequestedThemeVariant="Light">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto"
           Margin="30">

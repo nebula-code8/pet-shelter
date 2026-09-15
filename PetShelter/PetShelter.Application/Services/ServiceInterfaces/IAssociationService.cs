@@ -10,4 +10,5 @@ public interface IAssociationService
     Association? GetByAdminId(long adminId);
     List<Association> GetAll();
     void Delete(long id);
+    bool ExistsByEmail(string email, long? excludeId = null);
 }

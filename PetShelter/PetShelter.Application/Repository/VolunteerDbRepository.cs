@@ -281,17 +281,16 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
                                   u.date_of_birth,
                                   u.phone_number,
                                   u.email,
+                                  u.address,
                                   u.password,
                                   u.role,
-                                  u.address,
                                   u.is_deleted,
+                                  v.association_id,
                                   v.comment,
                                   v.status
                               FROM users u
-                              INNER JOIN volunteers v
-                                  ON u.id = v.user_id
-                              WHERE u.is_deleted = FALSE
-                              ORDER BY u.id;
+                              JOIN volunteers v ON u.id = v.user_id
+                              WHERE u.is_deleted = FALSE;
                               """;
 
         using IDataReader reader = command.ExecuteReader();

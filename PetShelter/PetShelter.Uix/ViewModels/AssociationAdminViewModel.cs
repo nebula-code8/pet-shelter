@@ -20,13 +20,11 @@ public class AssociationAdminViewModel
     {
         UserId = userId;
 
-        _associationService =
-            Injector.CreateInstance<IAssociationService>();
+        _associationService = Injector.CreateInstance<IAssociationService>();
 
         try
         {
-            Association =
-                _associationService.GetByAdminId(userId);
+            Association = _associationService.GetByAdminId(userId);
 
             if (Association == null)
             {

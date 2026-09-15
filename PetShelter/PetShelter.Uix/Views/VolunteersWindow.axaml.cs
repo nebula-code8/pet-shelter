@@ -4,16 +4,16 @@ using PetShelter.Uix.ViewModels;
 
 namespace PetShelter.Uix.Views;
 
-public partial class VolunteerManagementWindow : Window
+public partial class VolunteersWindow : Window
 {
-    private readonly VolunteerManagementViewModel _viewModel;
+    private readonly VolunteersViewModel _viewModel;
     private readonly long _adminUserId;
 
-    public VolunteerManagementWindow(long adminUserId, long associationId, string associationName)
+    public VolunteersWindow(long adminUserId, long associationId, string associationName)
     {
         InitializeComponent();
         _adminUserId = adminUserId;
-        _viewModel = new VolunteerManagementViewModel(associationId, associationName);
+        _viewModel = new VolunteersViewModel(associationId, associationName);
         DataContext = _viewModel;
     }
 

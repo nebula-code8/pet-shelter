@@ -7,7 +7,7 @@ using PetShelter.Application.Services.ServiceInterfaces;
 
 namespace PetShelter.Uix.ViewModels;
 
-public class VolunteerManagementViewModel :
+public class VolunteersViewModel :
     INotifyPropertyChanged
 {
     private readonly IVolunteerService _volunteerService;
@@ -42,7 +42,7 @@ public class VolunteerManagementViewModel :
         }
     }
 
-    public VolunteerManagementViewModel(
+    public VolunteersViewModel(
         long associationId,
         string associationName)
     {

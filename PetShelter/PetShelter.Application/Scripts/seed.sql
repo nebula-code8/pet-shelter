@@ -57,25 +57,6 @@ VALUES
      'nemanja.markovic@safetails.rs', 'password123', 3,
      'Bulevar Nikole Tesle 30, Niš', FALSE);
 
-
--- =========================================================
--- VOLUNTEERS
---
--- user_id must reference a user whose role is VOLUNTEER
---
--- status:
--- 0 = PENDING
--- 1 = APPROVED
--- 2 = REJECTED
--- =========================================================
-
-INSERT INTO volunteers
-(user_id, comment, status)
-VALUES
-    (6, 'I have experience working with dogs and cats.', 1),
-    (7, 'I would like to help with animal care and walking dogs.', 1);
-
-
 -- =========================================================
 -- ASSOCIATIONS
 -- =========================================================
@@ -119,6 +100,30 @@ VALUES
         FALSE
     );
 
+-- =========================================================
+-- VOLUNTEERS
+--
+-- status:
+-- 0 = PENDING
+-- 1 = APPROVED
+-- 2 = REJECTED
+-- =========================================================
+
+INSERT INTO volunteers
+(user_id, association_id, comment, status)
+VALUES
+    (
+        6,
+        1,
+        'I have experience working with dogs and cats.',
+        1
+    ),
+    (
+        7,
+        2,
+        'I would like to help with animal care and walking dogs.',
+        1
+    );
 
 -- =========================================================
 -- ANIMALS

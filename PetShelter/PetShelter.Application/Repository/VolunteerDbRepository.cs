@@ -10,11 +10,12 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
     private readonly UserDbRepository _userRepository = new();
 
     public long Insert(Volunteer volunteer)
-    {
-        using IDbConnection connection = CreateConnection();
-        IDbCommand command = connection.CreateCommand();
+{
+    using IDbConnection connection = CreateConnection();
 
-        command.CommandText = """
+    IDbCommand userCommand = connection.CreateCommand();
+
+    userCommand.CommandText = """
                               INSERT INTO users
                               (
                                   name,
@@ -44,44 +45,61 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
                               RETURNING id;
                               """;
 
-        AddParameter(command, "@name", volunteer.Name);
-        AddParameter(command, "@surname", volunteer.Surname);
-        AddParameter(command, "@gender", (int)volunteer.Gender);
-        AddParameter(command, "@date_of_birth", volunteer.DateOfBirth);
-        AddParameter(command, "@phone_number", volunteer.PhoneNumber);
-        AddParameter(command, "@email", volunteer.EmailAddress);
-        AddParameter(command, "@password", volunteer.Password);
-        AddParameter(command, "@role", (int)volunteer.Role);
-        AddParameter(command, "@address", volunteer.Address);
-        AddParameter(command, "@is_deleted", volunteer.IsDeleted);
+    AddParameter(userCommand, "@name", volunteer.Name);
+    AddParameter(userCommand, "@surname", volunteer.Surname);
+    AddParameter(userCommand, "@gender", (int)volunteer.Gender);
+    AddParameter(userCommand, "@date_of_birth", volunteer.DateOfBirth);
+    AddParameter(userCommand, "@phone_number", volunteer.PhoneNumber);
+    AddParameter(userCommand, "@email", volunteer.EmailAddress);
+    AddParameter(userCommand, "@password", volunteer.Password);
+    AddParameter(userCommand, "@role", (int)volunteer.Role);
+    AddParameter(userCommand, "@address", volunteer.Address);
+    AddParameter(userCommand, "@is_deleted", volunteer.IsDeleted);
 
-        long userId = Convert.ToInt64(command.ExecuteScalar());
+    long userId = Convert.ToInt64(
+        userCommand.ExecuteScalar()
+    );
 
-        command.Parameters.Clear();
+    IDbCommand volunteerCommand = connection.CreateCommand();
 
-        command.CommandText = """
-                              INSERT INTO volunteers
-                              (
-                                  user_id,
-                                  comment,
-                                  status
-                              )
-                              VALUES
-                              (
-                                  @user_id,
-                                  @comment,
-                                  @status
-                              );
-                              """;
+    volunteerCommand.CommandText = """
+                                   INSERT INTO volunteers
+                                   (
+                                       user_id,
+                                       association_id,
+                                       comment,
+                                       status
+                                   )
+                                   VALUES
+                                   (
+                                       @user_id,
+                                       @association_id,
+                                       @comment,
+                                       @status
+                                   );
+                                   """;
 
-        AddParameter(command, "@user_id", userId);
-        AddParameter(command, "@comment", volunteer.VolunteerComment);
-        AddParameter(command, "@status", (int)volunteer.Status);
+    AddParameter(volunteerCommand, "@user_id", userId);
+    AddParameter(
+        volunteerCommand,
+        "@association_id",
+        volunteer.AssociationId
+    );
+    AddParameter(
+        volunteerCommand,
+        "@comment",
+        volunteer.VolunteerComment
+    );
+    AddParameter(
+        volunteerCommand,
+        "@status",
+        (int)volunteer.Status
+    );
 
-        command.ExecuteNonQuery();
+    volunteerCommand.ExecuteNonQuery();
 
-        return userId;
-    }
+    return userId;
+}
 
     public int Update(Volunteer volunteer)
     {
@@ -126,12 +144,14 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
         volunteerCommand.CommandText = """
                                        UPDATE volunteers
                                        SET
+                                           association_id = @association_id,
                                            comment = @comment,
                                            status = @status
                                        WHERE user_id = @user_id;
                                        """;
 
         AddParameter(volunteerCommand, "@user_id", volunteer.Id);
+        AddParameter(volunteerCommand, "@association_id", volunteer.AssociationId);
         AddParameter(volunteerCommand, "@comment", volunteer.VolunteerComment);
         AddParameter(volunteerCommand, "@status", (int)volunteer.Status);
 
@@ -158,6 +178,7 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
                                   u.role,
                                   u.address,
                                   u.is_deleted,
+                                  v.association_id,
                                   v.comment,
                                   v.status
                               FROM users u
@@ -240,15 +261,14 @@ public class VolunteerDbRepository : BaseDbRepository, IVolunteerRepository
             Convert.ToString(reader["name"])!,
             Convert.ToString(reader["surname"])!,
             (Gender)Convert.ToInt32(reader["gender"]),
-            DateOnly.FromDateTime(
-                Convert.ToDateTime(reader["date_of_birth"])
-            ),
+            (DateOnly)reader["date_of_birth"],
             Convert.ToString(reader["phone_number"])!,
             Convert.ToString(reader["email"])!,
             Convert.ToString(reader["password"])!,
             (Role)Convert.ToInt32(reader["role"]),
             Convert.ToString(reader["address"])!,
             Convert.ToBoolean(reader["is_deleted"]),
+            Convert.ToInt64(reader["association_id"]),
             Convert.ToString(reader["comment"])!,
             (VolunteerStatus)Convert.ToInt32(reader["status"])
         );

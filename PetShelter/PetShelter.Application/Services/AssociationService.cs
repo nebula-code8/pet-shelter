@@ -34,6 +34,11 @@ public class AssociationService : IAssociationService
     {
         return _associationRepository.GetById(id);
     }
+    
+    public Association? GetByAdminId(long adminId)
+    {
+        return _associationRepository.GetByAdminId(adminId);
+    }
 
     public List<Association> GetAll()
     {

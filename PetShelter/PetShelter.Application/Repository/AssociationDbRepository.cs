@@ -117,6 +117,38 @@ public class AssociationDbRepository : BaseDbRepository, IAssociationRepository
 
         return MapAssociation(reader);
     }
+    
+    public Association? GetByAdminId(long adminId)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT
+                                  id,
+                                  name,
+                                  date_of_establishment,
+                                  phone_number,
+                                  email,
+                                  tip,
+                                  description,
+                                  address,
+                                  admin,
+                                  is_deleted
+                              FROM associations
+                              WHERE admin = @adminId
+                                AND is_deleted = FALSE;
+                              """;
+
+        AddParameter(command, "@adminId", adminId);
+
+        using IDataReader reader = command.ExecuteReader();
+
+        if (!reader.Read())
+            return null;
+
+        return MapAssociation(reader);
+    }
 
     public List<Association> GetAll()
     {

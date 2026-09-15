@@ -51,10 +51,17 @@ public partial class LoginWindow : Window
             return;
         }
         
+        if (role == Role.AssociationAdmin)
+        {
+            AssociationAdminWindow associationAdminWindow = new(userId);
+            associationAdminWindow.Show();
+            Close();
+            return;
+        }
+        
         if (role == Role.Volunteer)
         {
-            Volunteer? volunteer =
-                _volunteerService.GetById(userId);
+            Volunteer? volunteer = _volunteerService.GetById(userId);
 
             if (volunteer == null)
             {

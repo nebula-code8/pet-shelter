@@ -12,11 +12,17 @@ namespace PetShelter.Uix.Views;
 public partial class LoginWindow : UserControl
 {
     private readonly IUserService _userService;
+    private bool _isGhost;
 
-    public LoginWindow()
+    public LoginWindow(bool _isGhost = false)
     {
         InitializeComponent();
         _userService = Injector.CreateInstance<IUserService>();
+
+        if (_isGhost)
+        {
+            GhostLoginButton.IsVisible = false;
+        }
     }
 
     private void LoginButton_Click(object? sender, RoutedEventArgs e)
@@ -45,7 +51,7 @@ public partial class LoginWindow : UserControl
         {
             if (role == Role.Client)
             {
-                window.ShowClientHome(userId);
+                window.LoginSuccessful(userId);
             }
         }
         

@@ -15,6 +15,7 @@ public partial class OrganizationAnimalView : UserControl
 {
     private readonly Association _association;
     private readonly IAnimalService _animalService;
+    private readonly IAdoptionRequestService _adoptionRequestService;
 
     public OrganizationAnimalView(Association association)
     {
@@ -22,6 +23,7 @@ public partial class OrganizationAnimalView : UserControl
 
         _association = association;
         _animalService = Injector.CreateInstance<IAnimalService>();
+        _adoptionRequestService = Injector.CreateInstance<IAdoptionRequestService>();
 
         LoadOrganization();
         LoadAnimals();
@@ -148,7 +150,10 @@ public partial class OrganizationAnimalView : UserControl
 
         adoptButton.Click += (_, _) =>
         {
-            throw new NotImplementedException();
+            if (VisualRoot is MainWindow window)
+            {
+                window.AdoptAnimal(animal);
+            }
         };
 
         panel.Children.Add(adoptButton);

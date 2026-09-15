@@ -17,4 +17,16 @@ public class AdoptionRequestService : IAdoptionRequestService
         var adoptionRequests = _adoptionRepository.GetByAnimalId(animalId);
         return (adoptionRequests.Count == 0) ? throw new Exception("No adoption requests found") : adoptionRequests;
     }
+
+    public void SendAddoptionRequest(long userId, long animalId)
+    {
+        var request = new AdoptionRequest(userId, animalId, AdoptionStatus.Pending, null, DateOnly.FromDateTime(DateTime.Now));
+        try
+        {
+            _adoptionRepository.Insert(request);
+        } catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
 }

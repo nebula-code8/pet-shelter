@@ -171,4 +171,10 @@ public partial class OrganizationAnimalView : UserControl
             window.ShowClientHome();
         }
     }
+
+    private void DonateButton_Click(object? sender, RoutedEventArgs e)
+    {
+        var donationWindow = new DonationWindow(_association.Id);
+        donationWindow.Show();
+    }
 }

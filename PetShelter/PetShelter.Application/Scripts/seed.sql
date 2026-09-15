@@ -4,6 +4,7 @@
 -- 0 = CLIENT
 -- 1 = VOLUNTEER
 -- 2 = ADMIN
+-- 3 = ASSOCIATION_ADMIN
 -- gender:
 -- 0 = MALE
 -- 1 = FEMALE
@@ -11,43 +12,200 @@
 
 INSERT INTO users
 (name, surname, gender, date_of_birth, phone_number, email, password, role, address, is_deleted)
-VALUES ('Marko', 'Petrović', 0, '1998-05-12', '+381641112233',
-        'marko.petrovic@gmail.com', 'password123', 0,
-        'Bulevar Nemanjića 12, Niš', FALSE),
+VALUES
+    ('Marko', 'Petrović', 0, '1998-05-12', '+381641112233',
+     'marko.petrovic@gmail.com', 'password123', 0,
+     'Bulevar Nemanjića 12, Niš', FALSE),
 
-       ('Ana', 'Jovanović', 1, '2000-08-21', '+381642223344',
-        'ana.jovanovic@gmail.com', 'password123', 0,
-        'Vizantijski bulevar 45, Niš', FALSE),
+    ('Ana', 'Jovanović', 1, '2000-08-21', '+381642223344',
+     'ana.jovanovic@gmail.com', 'password123', 0,
+     'Vizantijski bulevar 45, Niš', FALSE),
 
-       ('Nikola', 'Stojanović', 0, '1995-03-17', '+381633334455',
-        'nikola.stojanovic@gmail.com', 'password123', 0,
-        'Voždova 23, Niš', FALSE),
+    ('Nikola', 'Stojanović', 0, '1995-03-17', '+381633334455',
+     'nikola.stojanovic@gmail.com', 'password123', 0,
+     'Voždova 23, Niš', FALSE),
 
-       ('Milica', 'Đorđević', 1, '1999-11-02', '+381644445566',
-        'milica.djordjevic@gmail.com', 'password123', 0,
-        'Bulevar Zorana Đinđića 17, Niš', FALSE),
+    ('Milica', 'Đorđević', 1, '1999-11-02', '+381644445566',
+     'milica.djordjevic@gmail.com', 'password123', 0,
+     'Bulevar Zorana Đinđića 17, Niš', FALSE),
 
-       ('Luka', 'Milošević', 0, '2001-01-28', '+381655556677',
-        'luka.milosevic@gmail.com', 'password123', 0,
-        'Dušanova 8, Niš', FALSE),
+    ('Luka', 'Milošević', 0, '2001-01-28', '+381655556677',
+     'luka.milosevic@gmail.com', 'password123', 0,
+     'Dušanova 8, Niš', FALSE),
 
-       ('Jelena', 'Nikolić', 1, '1997-06-14', '+381666667788',
-        'jelena.nikolic@gmail.com', 'password123', 1,
-        'Somborski bulevar 31, Niš', FALSE),
+    ('Jelena', 'Nikolić', 1, '1997-06-14', '+381666667788',
+     'jelena.nikolic@gmail.com', 'password123', 1,
+     'Somborski bulevar 31, Niš', FALSE),
 
-       ('Stefan', 'Ilić', 0, '1994-09-30', '+381677778899',
-        'stefan.ilic@gmail.com', 'password123', 1,
-        'Duvanište 14, Niš', FALSE),
+    ('Stefan', 'Ilić', 0, '1994-09-30', '+381677778899',
+     'stefan.ilic@gmail.com', 'password123', 1,
+     'Duvanište 14, Niš', FALSE),
 
-       ('Marija', 'Pavlović', 1, '1992-12-05', '+381688889900',
-        'marija.pavlovic@gmail.com', 'password123', 2,
-        'Medijana 7, Niš', FALSE);
+    ('Marija', 'Pavlović', 1, '1992-12-05', '+381688889900',
+     'marija.pavlovic@gmail.com', 'password123', 2,
+     'Medijana 7, Niš', FALSE),
 
+    ('Milan', 'Kostić', 0, '1988-04-17', '+381601111111',
+     'milan.kostic@nisanimalrescue.rs', 'password123', 3,
+     'Bulevar Svetog cara Konstantina 42, Niš', FALSE),
+
+    ('Ivana', 'Savić', 1, '1991-07-23', '+381602222222',
+     'ivana.savic@happypaws.rs', 'password123', 3,
+     'Dimitrija Tucovića 18, Niš', FALSE),
+
+    ('Nemanja', 'Marković', 0, '1986-10-09', '+381603333333',
+     'nemanja.markovic@safetails.rs', 'password123', 3,
+     'Bulevar Nikole Tesle 30, Niš', FALSE);
+
+-- =========================================================
+-- ASSOCIATIONS
+-- =========================================================
+
+INSERT INTO associations
+(name, date_of_establishment, phone_number, email, tip, description, address, admin, is_deleted)
+VALUES
+    (
+        'Niš Animal Rescue',
+        '2015-04-12',
+        '+381184001001',
+        'contact@nisanimalrescue.rs',
+        'Animal Rescue',
+        'Association dedicated to rescuing, treating and finding homes for abandoned animals.',
+        'Bulevar Svetog cara Konstantina 80, Niš',
+        9,
+        FALSE
+    ),
+
+    (
+        'Happy Paws',
+        '2018-09-20',
+        '+381184002002',
+        'info@happypaws.rs',
+        'Animal Shelter',
+        'Local animal shelter providing temporary homes and veterinary care for abandoned pets.',
+        'Dimitrija Tucovića 25, Niš',
+        10,
+        FALSE
+    ),
+
+    (
+        'Safe Tails',
+        '2020-02-15',
+        '+381184003003',
+        'office@safetails.rs',
+        'Rescue Organization',
+        'Non-profit organization focused on rescuing dogs and cats from dangerous environments.',
+        'Bulevar Nikole Tesle 42, Niš',
+        11,
+        FALSE
+    );
+
+-- =========================================================
+-- BANK ACCOUNTS
+-- =========================================================
+
+INSERT INTO bank_accounts
+(association_id, account_number, balance)
+VALUES
+    (
+        1,
+        '160-1000000000001-01',
+        50000.00
+    ),
+    (
+        2,
+        '160-1000000000002-02',
+        75000.00
+    ),
+    (
+        3,
+        '160-1000000000003-03',
+        40000.00
+    );
+
+-- =========================================================
+-- BANK TRANSACTIONS
+--
+-- transaction_type:
+-- 0 = DONATION
+-- 1 = EXPENSE
+-- =========================================================
+
+INSERT INTO bank_transactions
+(
+    bank_account_id,
+    transaction_type,
+    amount,
+    transaction_date,
+    source_account,
+    destination_account,
+    purpose,
+    description
+)
+VALUES
+
+-- Donation to Niš Animal Rescue
+(
+    1,
+    0,
+    20000.00,
+    '2026-09-01',
+    '160-3000000000001-01',
+    '160-1000000000001-01',
+    'Donation',
+    'Donation for animal care'
+),
+
+-- Expense by Niš Animal Rescue
+(
+    1,
+    1,
+    5000.00,
+    '2026-09-03',
+    '160-1000000000001-01',
+    '160-2000000000001-01',
+    'Veterinary treatment',
+    'Treatment for rescued dog'
+),
+
+-- Donation to Happy Paws
+(
+    2,
+    0,
+    30000.00,
+    '2026-09-02',
+    '160-3000000000002-02',
+    '160-1000000000002-02',
+    'Donation',
+    'Donation for animal food'
+),
+
+-- Expense by Happy Paws
+(
+    2,
+    1,
+    8000.00,
+    '2026-09-05',
+    '160-1000000000002-02',
+    '160-2000000000002-02',
+    'Animal food',
+    'Purchase of dog and cat food'
+),
+
+-- Donation to Safe Tails
+(
+    3,
+    0,
+    15000.00,
+    '2026-09-04',
+    '160-3000000000003-03',
+    '160-1000000000003-03',
+    'Donation',
+    'Donation for rescued animals'
+);
 
 -- =========================================================
 -- VOLUNTEERS
---
--- user_id must reference a user whose role is VOLUNTEER
 --
 -- status:
 -- 0 = PENDING
@@ -56,47 +214,20 @@ VALUES ('Marko', 'Petrović', 0, '1998-05-12', '+381641112233',
 -- =========================================================
 
 INSERT INTO volunteers
-    (user_id, comment, status)
-VALUES (6, 'I have experience working with dogs and cats.', 1),
-       (7, 'I would like to help with animal care and walking dogs.', 1);
-
-
--- =========================================================
--- ASSOCIATIONS
--- =========================================================
-
-INSERT INTO associations
-(name, date_of_establishment, phone_number, email, tip, description, address, admin, is_deleted)
-VALUES ('Niš Animal Rescue',
-        '2015-04-12',
-        '+381184001001',
-        'contact@nisanimalrescue.rs',
-        'Animal Rescue',
-        'Association dedicated to rescuing, treating and finding homes for abandoned animals.',
-        'Bulevar Svetog cara Konstantina 80, Niš',
-        8,
-        FALSE),
-
-       ('Happy Paws',
-        '2018-09-20',
-        '+381184002002',
-        'info@happypaws.rs',
-        'Animal Shelter',
-        'Local animal shelter providing temporary homes and veterinary care for abandoned pets.',
-        'Dimitrija Tucovića 25, Niš',
-        8,
-        FALSE),
-
-       ('Safe Tails',
-        '2020-02-15',
-        '+381184003003',
-        'office@safetails.rs',
-        'Rescue Organization',
-        'Non-profit organization focused on rescuing dogs and cats from dangerous environments.',
-        'Bulevar Nikole Tesle 42, Niš',
-        8,
-        FALSE);
-
+(user_id, association_id, comment, status)
+VALUES
+    (
+        6,
+        1,
+        'I have experience working with dogs and cats.',
+        1
+    ),
+    (
+        7,
+        2,
+        'I would like to help with animal care and walking dogs.',
+        1
+    );
 
 -- =========================================================
 -- ANIMALS
@@ -299,7 +430,7 @@ VALUES
 -- =========================================================
 
 INSERT INTO adoption_requests
-    (user_id, animal_id, status, adoption_date, request_date)
+(user_id, animal_id, status, adoption_date, request_date)
 VALUES
 
 -- Marko wants to adopt the Labrador

@@ -6,13 +6,15 @@
              x:Class="PetShelter.Uix.Views.OrganizationAnimalView">
     <Grid Background="#F5F5F5" RowDefinitions="Auto,*"> <!-- Header -->
         <Border Grid.Row="0" Background="White" Padding="25,15">
-            <Grid ColumnDefinitions="Auto,*">
+            <Grid ColumnDefinitions="Auto,Auto,*">
                 <Button Foreground="Gray" Content="← Back" Width="100" Click="BackButton_Click" />
-                <TextBlock Foreground="Gray" Grid.Column="1" x:Name="OrganizationNameTextBlock" FontSize="26"
+                <Button Foreground="Gray" Grid.Column="1" Content="Donate" Width="100" Click="DonateButton_Click" />
+                <TextBlock Foreground="Gray" Grid.Column="2" x:Name="OrganizationNameTextBlock" FontSize="26"
                            FontWeight="Bold"
                            VerticalAlignment="Center" Margin="20,0,0,0" />
             </Grid>
-        </Border> <!-- Content --> <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        </Border> <!-- Content --> 
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="40" Spacing="20"> <!-- Organization information -->
                 <Border Background="White" CornerRadius="12" Padding="25">
                     <StackPanel Spacing="10">

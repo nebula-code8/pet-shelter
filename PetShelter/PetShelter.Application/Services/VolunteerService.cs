@@ -19,6 +19,11 @@ public class VolunteerService : IVolunteerService
 
         return _volunteerRepository.Insert(volunteer);
     }
+    
+    public Volunteer? GetById(long id)
+    {
+        return _volunteerRepository.GetById(id);
+    }
 
     private static void Validate(Volunteer volunteer)
     {

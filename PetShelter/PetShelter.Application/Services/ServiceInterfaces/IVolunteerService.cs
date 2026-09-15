@@ -5,4 +5,5 @@ namespace PetShelter.Application.Services.ServiceInterfaces;
 public interface IVolunteerService
 {
     long Insert(Volunteer volunteer);
+    Volunteer? GetById(long id);
 }

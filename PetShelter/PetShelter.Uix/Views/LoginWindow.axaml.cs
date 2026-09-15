@@ -12,11 +12,14 @@ namespace PetShelter.Uix.Views;
 public partial class LoginWindow : Window
 {
     private readonly IUserService _userService;
+    private readonly IVolunteerService _volunteerService;
 
     public LoginWindow()
     {
         InitializeComponent();
+
         _userService = Injector.CreateInstance<IUserService>();
+        _volunteerService = Injector.CreateInstance<IVolunteerService>();
     }
     
     private void LoginButton_Click(object? sender, RoutedEventArgs e)
@@ -47,6 +50,33 @@ public partial class LoginWindow : Window
             Close();
             return;
         }
+        
+        if (role == Role.Volunteer)
+        {
+            Volunteer? volunteer =
+                _volunteerService.GetById(userId);
+
+            if (volunteer == null)
+            {
+                ShowError("Volunteer profile was not found.");
+                return;
+            }
+
+            if (volunteer.Status == VolunteerStatus.Pending)
+            {
+                ShowError("Your volunteer request is still pending approval.");
+                return;
+            }
+
+            if (volunteer.Status == VolunteerStatus.Rejected)
+            {
+                ShowError("Your volunteer request has been rejected.");
+                return;
+            }
+
+            ShowError("Volunteer functionality is not implemented yet.");
+            return;
+        }
         ShowError("This user role is not supported yet.");
     }
 
@@ -55,6 +85,16 @@ public partial class LoginWindow : Window
         RegistrationWindow registrationWindow = new();
         registrationWindow.Show();
         this.Close();
+    }
+    
+    private void RegisterVolunteerButton_Click(
+        object? sender,
+        RoutedEventArgs e)
+    {
+        VolunteerRegistrationWindow registrationWindow = new();
+        registrationWindow.Show();
+
+        Close();
     }
 
     private void ShowError(string message)

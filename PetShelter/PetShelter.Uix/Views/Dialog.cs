@@ -5,9 +5,12 @@ using Avalonia;
 
 namespace PetShelter.Uix.Views;
 
-public partial class ErrorDialog : Window {
-    public static void ShowError(Window owner, string message) {
-        var dialog = new Window {
+public partial class ErrorDialog : Window
+{
+    public static void ShowError(Window owner, string message)
+    {
+        var dialog = new Window
+        {
             Title = "Greška",
             Width = 360,
             Height = 180,
@@ -15,7 +18,8 @@ public partial class ErrorDialog : Window {
             CanResize = false
         };
         var panel = new StackPanel { Margin = new Avalonia.Thickness(24), Spacing = 16 };
-        panel.Children.Add(new TextBlock { Text = message, TextWrapping = Avalonia.Media.TextWrapping.Wrap, FontSize = 14 });
+        panel.Children.Add(new TextBlock
+            { Text = message, TextWrapping = Avalonia.Media.TextWrapping.Wrap, FontSize = 14 });
         var closeButton = new Button { Content = "U redu", Padding = new Avalonia.Thickness(16, 8) };
         closeButton.Click += (_, __) => dialog.Close();
         panel.Children.Add(closeButton);
@@ -26,9 +30,11 @@ public partial class ErrorDialog : Window {
 
 public partial class ConformationDialog : Window
 {
-    public static Task<bool> ShowAsync(Window owner, string title, string message) {
+    public static Task<bool> ShowAsync(Window owner, string title, string message)
+    {
         var dialogCompletitionSource = new TaskCompletionSource<bool>();
-        var dialog = new Window {
+        var dialog = new Window
+        {
             Title = title,
             Width = 380,
             Height = 200,
@@ -36,7 +42,8 @@ public partial class ConformationDialog : Window
             CanResize = false
         };
         var panel = new StackPanel { Margin = new Avalonia.Thickness(24), Spacing = 16 };
-        panel.Children.Add(new TextBlock {
+        panel.Children.Add(new TextBlock
+        {
             Text = message,
             TextWrapping = Avalonia.Media.TextWrapping.Wrap,
             FontSize = 14
@@ -44,8 +51,16 @@ public partial class ConformationDialog : Window
         var buttonBlock = new StackPanel { Orientation = Avalonia.Layout.Orientation.Horizontal, Spacing = 12 };
         var yesButton = new Button { Content = "Da", Padding = new Avalonia.Thickness(16, 8) };
         var noButton = new Button { Content = "Ne", Padding = new Avalonia.Thickness(16, 8) };
-        yesButton.Click += (_, _) => { dialogCompletitionSource.SetResult(true); dialog.Close(); };
-        noButton.Click += (_, _) => { dialogCompletitionSource.SetResult(false); dialog.Close(); };
+        yesButton.Click += (_, _) =>
+        {
+            dialogCompletitionSource.SetResult(true);
+            dialog.Close();
+        };
+        noButton.Click += (_, _) =>
+        {
+            dialogCompletitionSource.SetResult(false);
+            dialog.Close();
+        };
         buttonBlock.Children.Add(yesButton);
         buttonBlock.Children.Add(noButton);
         panel.Children.Add(buttonBlock);
@@ -60,14 +75,16 @@ public partial class InputDialog : Window
     private readonly TextBox _inputBox;
     private string _textBlockContent;
 
-    public InputDialog(string title = "Enter Text", string textBlockContent = "Enter Text") {
+    public InputDialog(string title = "Enter Text", string textBlockContent = "Enter Text")
+    {
         Title = title;
         Width = 350;
         Height = 350;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var root = new Grid { Margin = new Thickness(20), RowDefinitions = new RowDefinitions("Auto,*,Auto") };
         root.Children.Add(new TextBlock { Text = _textBlockContent, Margin = new Thickness(0, 0, 0, 10) });
-        _inputBox = new TextBox {
+        _inputBox = new TextBox
+        {
             AcceptsReturn = true,
             TextWrapping = Avalonia.Media.TextWrapping.Wrap,
             VerticalAlignment = VerticalAlignment.Stretch,
@@ -75,7 +92,8 @@ public partial class InputDialog : Window
         };
         Grid.SetRow(_inputBox, 1);
         root.Children.Add(_inputBox);
-        var buttonPanel = new StackPanel {
+        var buttonPanel = new StackPanel
+        {
             Orientation = Orientation.Horizontal,
             HorizontalAlignment = HorizontalAlignment.Right,
             Spacing = 10,
@@ -91,7 +109,9 @@ public partial class InputDialog : Window
         Content = root;
     }
 
-    public static async Task<string?> ShowAsync(Window owner, string title = "Enter Text", string textBlockContent = "Enter Text") {
+    public static async Task<string?> ShowAsync(Window owner, string title = "Enter Text",
+        string textBlockContent = "Enter Text")
+    {
         var dialog = new InputDialog(title, textBlockContent);
         return await dialog.ShowDialog<string?>(owner);
     }
@@ -99,8 +119,10 @@ public partial class InputDialog : Window
 
 public partial class PopupWindow : Window
 {
-    public static void ShowMessage(Window owner, string title, string message) {
-        var dialog = new Window {
+    public static async Task ShowMessage(Window owner, string title, string message)
+    {
+        var dialog = new Window
+        {
             Title = title,
             Width = 360,
             Height = 180,
@@ -108,11 +130,12 @@ public partial class PopupWindow : Window
             CanResize = false
         };
         var panel = new StackPanel { Margin = new Avalonia.Thickness(24), Spacing = 16 };
-        panel.Children.Add(new TextBlock { Text = message, TextWrapping = Avalonia.Media.TextWrapping.Wrap, FontSize = 14 });
+        panel.Children.Add(new TextBlock
+            { Text = message, TextWrapping = Avalonia.Media.TextWrapping.Wrap, FontSize = 14 });
         var closeButton = new Button { Content = "U redu", Padding = new Avalonia.Thickness(16, 8) };
         closeButton.Click += (_, __) => dialog.Close();
         panel.Children.Add(closeButton);
         dialog.Content = panel;
-        dialog.ShowDialog(owner);
+        await dialog.ShowDialog(owner);
     }
 }

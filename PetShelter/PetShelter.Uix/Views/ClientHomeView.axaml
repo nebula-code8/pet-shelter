@@ -7,37 +7,76 @@
     <Grid Background="#F5F5F5" RowDefinitions="Auto,*"> <!-- Header -->
         <Border Grid.Row="0" Background="White" Padding="25,15">
             <Grid ColumnDefinitions="*,Auto">
-                <TextBlock Foreground="Gray" Text="Pet Shelter" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Grid.Column="1" Foreground="Gray" Content="Logout" Width="100" Height="35" Click="LogoutButton_Click" />
+                <TextBlock Foreground="Gray" Text="Pet Shelter" FontSize="26" FontWeight="Bold"
+                           VerticalAlignment="Center" />
+                <Button Grid.Column="1" Foreground="Gray" Content="Logout" Width="100" Height="35"
+                        Click="LogoutButton_Click" />
             </Grid>
         </Border> <!-- Main content -->
         <Grid Grid.Row="1" Margin="30" ColumnDefinitions="*,3*" ColumnSpacing="30" x:Name="MainGrid"> <!-- User information -->
-            <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="25" x:Name="UserDataBorder">
-                <StackPanel Spacing="15">
-                    <TextBlock Foreground="Gray" Text="My Information" FontSize="24" FontWeight="Bold" /> <Separator />
-                    <StackPanel Spacing="5">
-                        <TextBlock Foreground="Gray" Text="Name" FontWeight="Bold" /> <TextBlock Foreground="Gray" x:Name="NameTextBlock" />
+            <Grid Grid.Column="0" RowDefinitions="Auto,*" RowSpacing="20">
+                <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="25" x:Name="UserDataBorder">
+                    <StackPanel Spacing="15">
+                        <TextBlock Foreground="Gray" Text="My Information" FontSize="24" FontWeight="Bold" />
+                        <Separator />
+                        <StackPanel Spacing="5">
+                            <TextBlock Foreground="Gray" Text="Name" FontWeight="Bold" />
+                            <TextBlock Foreground="Gray" x:Name="NameTextBlock" />
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Foreground="Gray" Text="Surname" FontWeight="Bold" />
+                            <TextBlock Foreground="Gray" x:Name="SurnameTextBlock" />
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Foreground="Gray" Text="Email" FontWeight="Bold" />
+                            <TextBlock Foreground="Gray" x:Name="EmailTextBlock" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Foreground="Gray" Text="Phone" FontWeight="Bold" />
+                            <TextBlock Foreground="Gray" x:Name="PhoneTextBlock" />
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Foreground="Gray" Text="Address" FontWeight="Bold" />
+                            <TextBlock Foreground="Gray" x:Name="AddressTextBlock" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Foreground="Gray" Text="Date of birth" FontWeight="Bold" />
+                            <TextBlock Foreground="Gray" x:Name="DateOfBirthTextBlock" />
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Spacing="5">
-                        <TextBlock Foreground="Gray" Text="Surname" FontWeight="Bold" /> <TextBlock Foreground="Gray" x:Name="SurnameTextBlock" />
-                    </StackPanel>
-                    <StackPanel Spacing="5">
-                        <TextBlock Foreground="Gray" Text="Email" FontWeight="Bold" />
-                        <TextBlock Foreground="Gray" x:Name="EmailTextBlock" TextWrapping="Wrap" />
-                    </StackPanel>
-                    <StackPanel Spacing="5">
-                        <TextBlock Foreground="Gray" Text="Phone" FontWeight="Bold" /> <TextBlock Foreground="Gray" x:Name="PhoneTextBlock" />
-                    </StackPanel>
-                    <StackPanel Spacing="5">
-                        <TextBlock Foreground="Gray" Text="Address" FontWeight="Bold" />
-                        <TextBlock Foreground="Gray" x:Name="AddressTextBlock" TextWrapping="Wrap" />
-                    </StackPanel>
-                    <StackPanel Spacing="5">
-                        <TextBlock Foreground="Gray" Text="Date of birth" FontWeight="Bold" />
-                        <TextBlock Foreground="Gray" x:Name="DateOfBirthTextBlock" />
-                    </StackPanel>
-                </StackPanel>
-            </Border> <!-- Organizations --> 
+                </Border> <!-- Organizations -->
+                <Border Grid.Row="1"
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="25"
+                        x:Name="AdoptedAnimalBorder">
+
+                    <Grid RowDefinitions="Auto,*">
+
+                        <TextBlock Grid.Row="0"
+                                   Text="My Adopted Dogs"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,20" />
+
+                        <ScrollViewer Grid.Row="1"
+                                      VerticalScrollBarVisibility="Auto">
+
+                            <ItemsControl x:Name="AdoptedAnimalList">
+
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Spacing="12" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                            </ItemsControl>
+
+                        </ScrollViewer>
+
+                    </Grid>
+                </Border>
+            </Grid>
             <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="25">
                 <Grid RowDefinitions="Auto,*">
                     <TextBlock Text="Organizations" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" />

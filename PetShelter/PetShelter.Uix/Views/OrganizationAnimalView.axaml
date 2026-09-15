@@ -8,7 +8,8 @@
         <Border Grid.Row="0" Background="White" Padding="25,15">
             <Grid ColumnDefinitions="Auto,*">
                 <Button Foreground="Gray" Content="← Back" Width="100" Click="BackButton_Click" />
-                <TextBlock Foreground="Gray" Grid.Column="1" x:Name="OrganizationNameTextBlock" FontSize="26" FontWeight="Bold"
+                <TextBlock Foreground="Gray" Grid.Column="1" x:Name="OrganizationNameTextBlock" FontSize="26"
+                           FontWeight="Bold"
                            VerticalAlignment="Center" Margin="20,0,0,0" />
             </Grid>
         </Border> <!-- Content --> <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
@@ -22,7 +23,8 @@
                         <TextBlock Foreground="Gray" x:Name="OrganizationPhoneTextBlock" />
                         <TextBlock Foreground="Gray" x:Name="OrganizationEmailTextBlock" />
                     </StackPanel>
-                </Border> <!-- Animals --> <TextBlock Foreground="Gray" Text="Animals" FontSize="24" FontWeight="Bold" />
+                </Border> <!-- Animals -->
+                <TextBlock Foreground="Gray" Text="Animals" FontSize="24" FontWeight="Bold" />
                 <ItemsControl x:Name="AnimalsList">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

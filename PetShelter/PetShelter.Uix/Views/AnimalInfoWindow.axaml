@@ -1,0 +1,131 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PetShelter.Uix.Views.AnimalInfoWindow"
+        Title="AnimalWindow">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Border Padding="30">
+
+            <StackPanel Spacing="15">
+
+                <TextBlock Text="Animal Information"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="Gray"/>
+
+                <Separator/>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Name"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="NameTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Species"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="SpeciesTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Breed"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="BreedTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Gender"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="GenderTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Date of birth"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="DateOfBirthTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Description"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="DescriptionTextBlock"
+                               TextWrapping="Wrap"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Vaccinated"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="VaccinatedTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Sterilized"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="SterilizedTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Health status"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="HealthStatusTextBlock"
+                               TextWrapping="Wrap"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Date arrived"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="DateArrivedTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Association ID"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+                    <TextBlock x:Name="AssociationIdTextBlock"
+                               Foreground="Gray"/>
+                </StackPanel>
+                
+                <StackPanel Spacing="5">
+                    <Button Content="Close"
+                            Width="100"
+                            HorizontalAlignment="Center"
+                            Click="CloseButton_Click"/>
+                
+                    <Button Content="Cancel Request"
+                            Width="100"
+                            HorizontalAlignment="Center"
+                            IsVisible="False"
+                            IsEnabled="False"
+                            Click="CancleButton_Click"
+                            x:Name="CancelRequestButton"/>
+                </StackPanel>
+                
+            </StackPanel>
+
+        </Border>
+
+    </ScrollViewer>
+</Window>

@@ -5,5 +5,5 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="PetShelter.Uix.MainWindow"
         Title="PetShelter">
-        <ContentControl x:Name="MainContent"/>
+    <ContentControl x:Name="MainContent" />
 </Window>

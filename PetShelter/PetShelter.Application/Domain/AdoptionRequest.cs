@@ -17,4 +17,9 @@ public class AdoptionRequest
         AdoptionDate = adoptionDate;
         RequestDate = requestDate;
     }
+
+    public void Cancle()
+    {
+        AdoptionStatus = AdoptionStatus.Rejected;
+    }
 }

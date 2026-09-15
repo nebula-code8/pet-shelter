@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using PetShelter.Application.Repository;
 using PetShelter.Application.Services.ServiceInterfaces;
-
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
@@ -157,7 +156,7 @@ public partial class OrganizationAnimalView : UserControl
         };
 
         panel.Children.Add(adoptButton);
-        
+
         card.Child = panel;
 
         return card;

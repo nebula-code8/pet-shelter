@@ -15,6 +15,7 @@ public partial class ClientHomeView : UserControl
 
     private readonly IUserService _userService;
     private readonly IAssociationService _associationService;
+    private readonly IAnimalService _animalService;
 
     public ClientHomeView(long userId)
     {
@@ -24,22 +25,38 @@ public partial class ClientHomeView : UserControl
 
         _userService = Injector.CreateInstance<IUserService>();
         _associationService = Injector.CreateInstance<IAssociationService>();
+        _animalService = Injector.CreateInstance<IAnimalService>();
 
         LoadUser();
+        LoadAdoptedAnimals();
         LoadOrganizations();
     }
 
     public ClientHomeView()
     {
         InitializeComponent();
-        
+
         _userService = Injector.CreateInstance<IUserService>();
         _associationService = Injector.CreateInstance<IAssociationService>();
-        
+        _animalService = Injector.CreateInstance<IAnimalService>();
+
         HideUserDataSection();
         LoadOrganizations();
     }
     
+    private void LoadAdoptedAnimals()
+    {
+        var animals = _animalService.GetByUserId(_userId);
+        AdoptedAnimalList.Items.Clear();
+
+        foreach (var animal in animals)
+        {
+            AdoptedAnimalList.Items.Add(
+                new AnimalCard(animal, _userId)
+            );
+        }
+    }
+
     private void HideUserDataSection()
     {
         UserDataBorder.IsVisible = false;

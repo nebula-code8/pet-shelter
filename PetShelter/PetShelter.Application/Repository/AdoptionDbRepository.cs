@@ -90,7 +90,7 @@ public class AdoptionDbRepository : BaseDbRepository, IAdoptionRepository
 
         return MapAdoptionRequest(reader);
     }
-    
+
     public List<AdoptionRequest> GetByUserId(long userId)
     {
         using IDbConnection connection = CreateConnection();
@@ -119,7 +119,7 @@ public class AdoptionDbRepository : BaseDbRepository, IAdoptionRepository
 
         return adoptionRequests;
     }
-    
+
     public List<AdoptionRequest> GetByAnimalId(long animalId)
     {
         using IDbConnection connection = CreateConnection();
@@ -135,11 +135,11 @@ public class AdoptionDbRepository : BaseDbRepository, IAdoptionRepository
                               FROM adoption_requests
                               WHERE animal_id = @animal_id;
                               """;
-        
+
         AddParameter(command, "@animal_id", animalId);
 
         using IDataReader reader = command.ExecuteReader();
-        
+
         List<AdoptionRequest> adoptionRequests = new();
         while (reader.Read())
         {

@@ -10,7 +10,7 @@ public partial class MainWindow : Window
 {
     private long? _loggedInUserId;
     private Animal? _pendingAdoptionAnimal;
-    
+
     public MainWindow()
     {
         InitializeComponent();
@@ -44,7 +44,7 @@ public partial class MainWindow : Window
         MainContent.Content =
             new OrganizationAnimalView(association);
     }
-    
+
     public void ShowClientHome()
     {
         if (_loggedInUserId == null)
@@ -67,12 +67,12 @@ public partial class MainWindow : Window
     {
         return _loggedInUserId == null;
     }
-    
+
     public long? GetLoggedInUserId()
     {
         return _loggedInUserId;
     }
-    
+
     public void AdoptAnimal(Animal animal)
     {
         if (_loggedInUserId == null)
@@ -88,7 +88,7 @@ public partial class MainWindow : Window
 
         SendAdoptionRequest(animal);
     }
-    
+
     private void SendAdoptionRequest(Animal animal)
     {
         if (_loggedInUserId == null)
@@ -106,7 +106,7 @@ public partial class MainWindow : Window
             "Adoption Request",
             "Vas zahtev za udomljavanje je uspesno prosledjen.");
     }
-    
+
     public void LoginSuccessful(long userId)
     {
         _loggedInUserId = userId;
@@ -119,8 +119,6 @@ public partial class MainWindow : Window
             _pendingAdoptionAnimal = null;
 
             SendAdoptionRequest(animal);
-
-            
         }
 
         ShowClientHome(userId);

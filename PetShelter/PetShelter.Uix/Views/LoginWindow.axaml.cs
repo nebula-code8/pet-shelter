@@ -45,8 +45,8 @@ public partial class LoginWindow : UserControl
         long userId = result.Value.Id;
         Role role = result.Value.Role;
         ErrorTextBlock.IsVisible =
-            false; 
-        
+            false;
+
         if (VisualRoot is MainWindow window)
         {
             if (role == Role.Client)
@@ -54,7 +54,7 @@ public partial class LoginWindow : UserControl
                 window.LoginSuccessful(userId);
             }
         }
-        
+
         // TODO:
         // Navigate to the appropriate page depending on the role.
         // // // Example:

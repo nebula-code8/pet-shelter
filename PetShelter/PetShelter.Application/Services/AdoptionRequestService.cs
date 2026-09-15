@@ -7,11 +7,12 @@ namespace PetShelter.Application.Services;
 public class AdoptionRequestService : IAdoptionRequestService
 {
     private readonly IAdoptionRepository _adoptionRepository;
+
     public AdoptionRequestService()
     {
         _adoptionRepository = Injector.CreateInstance<IAdoptionRepository>();
     }
-    
+
     public List<AdoptionRequest> GetByAnimalId(long animalId)
     {
         var adoptionRequests = _adoptionRepository.GetByAnimalId(animalId);
@@ -20,11 +21,13 @@ public class AdoptionRequestService : IAdoptionRequestService
 
     public void SendAddoptionRequest(long userId, long animalId)
     {
-        var request = new AdoptionRequest(userId, animalId, AdoptionStatus.Pending, null, DateOnly.FromDateTime(DateTime.Now));
+        var request = new AdoptionRequest(userId, animalId, AdoptionStatus.Pending, null,
+            DateOnly.FromDateTime(DateTime.Now));
         try
         {
             _adoptionRepository.Insert(request);
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             throw new Exception(e.Message);
         }

@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		x:Class="PetShelter.Uix.Views.VolunteerWindow"
+		Width="600"
+		Height="500"
+		Title="Volunteer"
+		Background="White"
+		RequestedThemeVariant="Light">
+
+	<Grid Background="White">
+		<Border Margin="20" Padding="12" Background="#F7F7F7" CornerRadius="8" BorderBrush="#D9D9D9" BorderThickness="1">
+			<StackPanel Spacing="10">
+				<TextBlock Text="Volunteer Panel" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+				<Button Content="Adopters" Width="200" HorizontalAlignment="Center" Click="AdoptersButton_Click"/>
+
+				<Button Content="Logout" Width="90" HorizontalAlignment="Left" Click="LogoutButton_Click"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+
+</Window>

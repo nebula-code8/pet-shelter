@@ -6,4 +6,5 @@ public interface IAdoptionRequestService
 {
     public List<AdoptionRequest> GetByAnimalId(long animalId);
     public void SendAddoptionRequest(long userId, long animalId);
+    public List<User> GetAdopters();
 }

@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		x:Class="PetShelter.Uix.Views.AllAdoptersWindow"
+		Width="600"
+		Height="500"
+		Title="Adopters"
+		Background="White"
+		RequestedThemeVariant="Light">
+
+	<Grid Background="White">
+		<Border Margin="20" Padding="12" Background="#F7F7F7" CornerRadius="8" BorderBrush="#D9D9D9" BorderThickness="1">
+			<StackPanel Spacing="10">
+				<TextBlock Text="Adopters" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+				<ListBox Name="AdoptersListBox" />
+
+				<Button Content="Close" Width="90" HorizontalAlignment="Left" Click="CloseButton_Click"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+
+</Window>

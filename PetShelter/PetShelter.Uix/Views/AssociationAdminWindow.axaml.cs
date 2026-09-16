@@ -28,6 +28,18 @@ public partial class AssociationAdminWindow : Window
 
     private void AnimalsButton_Click(object? sender, RoutedEventArgs e)
     {
+        if (_viewModel.Association == null)
+            return;
+
+        AnimalsWindow window = new(
+            _viewModel.UserId,
+            _viewModel.Association.Id,
+            _viewModel.Association.Name
+        );
+
+        window.Show();
+
+        Close();
     }
 
     private async void AdoptersButton_Click(object? sender, RoutedEventArgs e)

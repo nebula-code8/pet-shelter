@@ -1,0 +1,137 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="PetShelter.Uix.Views.AnimalFormWindow"
+        Width="650"
+        Height="800"
+        MinWidth="550"
+        MinHeight="600"
+        Title="{Binding WindowTitle}"
+        Background="White"
+        RequestedThemeVariant="Light">
+
+    <Window.Styles>
+
+        <Style Selector="TextBlock.label">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,8,0,4"/>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+        </Style>
+
+        <Style Selector="Button.action">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#BFBFBF"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.action:pointerover">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+    </Window.Styles>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <StackPanel Margin="35"
+                    Spacing="3">
+
+            <TextBlock Text="{Binding WindowTitle}"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Classes="label"
+                       Text="Name"/>
+
+            <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Species"/>
+
+            <TextBox Text="{Binding Species, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Breed"/>
+
+            <TextBox Text="{Binding Breed, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Gender"/>
+
+            <ComboBox ItemsSource="{Binding Genders}"
+                      SelectedItem="{Binding Gender, Mode=TwoWay}"
+                      Background="White"
+                      Foreground="Black"/>
+
+            <TextBlock Classes="label"
+                       Text="Date of birth"/>
+
+            <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Health status"/>
+
+            <TextBox Text="{Binding HealthStatus, Mode=TwoWay}"/>
+
+            <TextBlock Classes="label"
+                       Text="Arrival date"/>
+
+            <DatePicker SelectedDate="{Binding DateArrived, Mode=TwoWay}"/>
+
+            <CheckBox Content="Vaccinated"
+                      IsChecked="{Binding IsVaccinated, Mode=TwoWay}"
+                      Foreground="Black"
+                      Margin="0,15,0,0"/>
+
+            <CheckBox Content="Sterilized"
+                      IsChecked="{Binding IsSterilized, Mode=TwoWay}"
+                      Foreground="Black"
+                      Margin="0,8,0,0"/>
+
+            <TextBlock Classes="label"
+                       Text="Description"/>
+
+            <TextBox Text="{Binding Description, Mode=TwoWay}"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     Height="90"/>
+
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="Red"
+                       TextWrapping="Wrap"
+                       Margin="0,15,0,5"/>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="10"
+                        Margin="0,15,0,20">
+
+                <Button Classes="action"
+                        Content="Cancel"
+                        Click="CancelButton_Click"/>
+
+                <Button Classes="action"
+                        Content="{Binding SaveButtonText}"
+                        Click="SaveButton_Click"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
+</Window>

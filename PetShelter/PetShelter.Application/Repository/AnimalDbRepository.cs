@@ -51,8 +51,8 @@ public class AnimalDbRepository : BaseDbRepository, IAnimalRepository
         AddParameter(command, "@gender", (int)animal.Gender);
         AddParameter(command, "@date_of_birth", animal.DateOfBirth);
         AddParameter(command, "@description", animal.Description);
-        AddParameter(command, "@is_vaccinated", animal.IsVaccinated);
-        AddParameter(command, "@is_sterilized", animal.IsSterilized);
+        AddParameter(command, "@is_vaccinated", animal.IsVaccinated ? 1 : 0);
+        AddParameter(command, "@is_sterilized", animal.IsSterilized ? 1 : 0);
         AddParameter(command, "@health_status", animal.HealthStatus);
         AddParameter(command, "@date_arrived", animal.DateArrived);
         AddParameter(command, "@association_id", animal.AssociationId);
@@ -131,8 +131,8 @@ public class AnimalDbRepository : BaseDbRepository, IAnimalRepository
         AddParameter(command, "@gender", (int)animal.Gender);
         AddParameter(command, "@date_of_birth", animal.DateOfBirth);
         AddParameter(command, "@description", animal.Description);
-        AddParameter(command, "@is_vaccinated", animal.IsVaccinated);
-        AddParameter(command, "@is_sterilized", animal.IsSterilized);
+        AddParameter(command, "@is_vaccinated", animal.IsVaccinated ? 1 : 0);
+        AddParameter(command, "@is_sterilized", animal.IsSterilized ? 1 : 0);
         AddParameter(command, "@health_status", animal.HealthStatus);
         AddParameter(command, "@date_arrived", animal.DateArrived);
         AddParameter(command, "@association_id", animal.AssociationId);

@@ -61,4 +61,58 @@ public class AnimalService : IAnimalService
 
         return results;
     }
+    
+    
+    public List<Animal> GetAllForAssociationAdmin(long associationId)
+    {
+        var animals = _animalRepository
+            .GetAll()
+            .Where(a => a.AssociationId == associationId)
+            .ToList();
+
+        return animals
+            .Where(animal =>
+                !_adoptionRequestRepository
+                    .GetByAnimalId(animal.Id)
+                    .Any(r => r.AdoptionStatus == AdoptionStatus.Aproved))
+            .ToList();
+    }
+
+    public Animal? GetById(long id)
+    {
+        return _animalRepository.GetById(id);
+    }
+
+    public long Insert(Animal animal)
+    {
+        return _animalRepository.Insert(animal);
+    }
+
+    public int Update(Animal animal)
+    {
+        var requests = _adoptionRequestRepository.GetByAnimalId(animal.Id);
+
+        if (requests.Any(r => r.AdoptionStatus == AdoptionStatus.Pending))
+        {
+            throw new Exception(
+                "Animal cannot be edited while it has a pending adoption request."
+            );
+        }
+
+        return _animalRepository.Update(animal);
+    }
+
+    public bool Delete(long id)
+    {
+        var requests = _adoptionRequestRepository.GetByAnimalId(id);
+
+        if (requests.Any(r => r.AdoptionStatus == AdoptionStatus.Pending))
+        {
+            throw new Exception(
+                "Animal cannot be deleted while it has a pending adoption request."
+            );
+        }
+
+        return _animalRepository.Delete(id);
+    }
 }

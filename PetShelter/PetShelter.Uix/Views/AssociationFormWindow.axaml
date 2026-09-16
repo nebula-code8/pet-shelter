@@ -9,7 +9,8 @@
         MinWidth="600"
         MinHeight="600"
         Title="{Binding WindowTitle}"
-        Background="White">
+        Background="White"
+        RequestedThemeVariant="Light">
 
     <Window.Styles>
 
@@ -58,9 +59,9 @@
             <TextBox Text="{Binding AssociationName, Mode=TwoWay}"/>
 
             <TextBlock Classes="label"
-                       Text="Date of establishment (yyyy-MM-dd)"/>
+                       Text="Date of establishment"/>
 
-            <TextBox Text="{Binding DateOfEstablishment, Mode=TwoWay}"/>
+            <DatePicker SelectedDate="{Binding DateOfEstablishment, Mode=TwoWay}"/>
 
             <TextBlock Classes="label"
                        Text="Phone number"/>
@@ -90,10 +91,21 @@
 
             <TextBox Text="{Binding Address, Mode=TwoWay}"/>
 
-            <!-- Показываем этот блок только при создании -->
+            
             <StackPanel IsVisible="{Binding IsCreateMode}"
                         Margin="0,25,0,0">
+                
+                <TextBlock Text="Bank Account"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="Black"
+                           Margin="0,0,0,10"/>
 
+                <TextBlock Classes="label"
+                           Text="Account number"/>
+
+                <TextBox Text="{Binding AccountNumber, Mode=TwoWay}"/>
+                
                 <TextBlock Text="Association Administrator"
                            FontSize="22"
                            FontWeight="Bold"
@@ -119,9 +131,9 @@
                           Foreground="Black"/>
 
                 <TextBlock Classes="label"
-                           Text="Date of birth (yyyy-MM-dd)"/>
+                           Text="Date of birth"/>
 
-                <TextBox Text="{Binding AdminDateOfBirth, Mode=TwoWay}"/>
+                <DatePicker SelectedDate="{Binding AdminDateOfBirth, Mode=TwoWay}"/>
 
                 <TextBlock Classes="label"
                            Text="Phone number"/>

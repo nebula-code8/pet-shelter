@@ -91,6 +91,64 @@ public class AdoptionDbRepository : BaseDbRepository, IAdoptionRepository
         return MapAdoptionRequest(reader);
     }
 
+    public List<AdoptionRequest> GetByUserId(long userId)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT
+                                  user_id,
+                                  animal_id,
+                                  status,
+                                  adoption_date,
+                                  request_date
+                              FROM adoption_requests
+                              WHERE user_id = @user_id;
+                              """;
+
+        AddParameter(command, "@user_id", userId);
+
+        using IDataReader reader = command.ExecuteReader();
+
+        List<AdoptionRequest> adoptionRequests = new();
+        while (reader.Read())
+        {
+            adoptionRequests.Add(MapAdoptionRequest(reader));
+        }
+
+        return adoptionRequests;
+    }
+
+    public List<AdoptionRequest> GetByAnimalId(long animalId)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT
+                                  user_id,
+                                  animal_id,
+                                  status,
+                                  adoption_date,
+                                  request_date
+                              FROM adoption_requests
+                              WHERE animal_id = @animal_id;
+                              """;
+
+        AddParameter(command, "@animal_id", animalId);
+
+        using IDataReader reader = command.ExecuteReader();
+
+        List<AdoptionRequest> adoptionRequests = new();
+        while (reader.Read())
+        {
+            adoptionRequests.Add(MapAdoptionRequest(reader));
+        }
+
+        return adoptionRequests;
+    }
+
     public List<AdoptionRequest> GetAll()
     {
         using IDbConnection connection = CreateConnection();
@@ -142,12 +200,10 @@ public class AdoptionDbRepository : BaseDbRepository, IAdoptionRepository
             Convert.ToInt64(reader["user_id"]),
             Convert.ToInt64(reader["animal_id"]),
             (AdoptionStatus)Convert.ToInt32(reader["status"]),
-            DateOnly.FromDateTime(
-                Convert.ToDateTime(reader["adoption_date"])
-            ),
-            DateOnly.FromDateTime(
-                Convert.ToDateTime(reader["request_date"])
-            )
+            reader["adoption_date"] == DBNull.Value
+                ? null
+                : (DateOnly)reader["adoption_date"],
+            (DateOnly)reader["request_date"]
         );
     }
 }

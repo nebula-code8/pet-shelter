@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PetShelter.Uix.Views.OrganizationAnimalView">
+    <Grid Background="#F5F5F5" RowDefinitions="Auto,*"> <!-- Header -->
+        <Border Grid.Row="0" Background="White" Padding="25,15">
+            <Grid ColumnDefinitions="Auto,Auto,*">
+                <Button Foreground="Gray" Content="← Back" Width="100" Click="BackButton_Click" />
+                <Button Foreground="Gray" Grid.Column="1" Content="Donate" Width="100" Click="DonateButton_Click" />
+                <TextBlock Foreground="Gray" Grid.Column="2" x:Name="OrganizationNameTextBlock" FontSize="26"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center" Margin="20,0,0,0" />
+            </Grid>
+        </Border> <!-- Content --> 
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40" Spacing="20"> <!-- Organization information -->
+                <Border Background="White" CornerRadius="12" Padding="25">
+                    <StackPanel Spacing="10">
+                        <TextBlock Foreground="Gray" Text="Organization Information" FontSize="22" FontWeight="Bold" />
+                        <TextBlock Foreground="Gray" x:Name="OrganizationTypeTextBlock" />
+                        <TextBlock Foreground="Gray" x:Name="OrganizationDescriptionTextBlock" TextWrapping="Wrap" />
+                        <TextBlock Foreground="Gray" x:Name="OrganizationAddressTextBlock" />
+                        <TextBlock Foreground="Gray" x:Name="OrganizationPhoneTextBlock" />
+                        <TextBlock Foreground="Gray" x:Name="OrganizationEmailTextBlock" />
+                    </StackPanel>
+                </Border> <!-- Animals -->
+                <TextBlock Foreground="Gray" Text="Animals" FontSize="24" FontWeight="Bold" />
+                <ItemsControl x:Name="AnimalsList">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

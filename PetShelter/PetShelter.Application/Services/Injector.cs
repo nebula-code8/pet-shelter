@@ -19,9 +19,12 @@ public class Injector
         { typeof(IAnimalService), () => new AnimalService() },
         { typeof(IAssociationService), () => new AssociationService() },
         { typeof(IUserService), () => new UserService() },
-        { typeof(IVolunteerService), () => new VolunteerService() }
+        { typeof(IVolunteerService), () => new VolunteerService() },
+        { typeof(IBankAccountRepository), () => new BankAccountDbRepository() },
+        { typeof(IBankTransactionRepository), () => new BankTransactionDbRepository() },
+        { typeof(IFinanceService), () => new FinanceService() },
     };
-    
+
     public static T CreateInstance<T>()
     {
         Type type = typeof(T);

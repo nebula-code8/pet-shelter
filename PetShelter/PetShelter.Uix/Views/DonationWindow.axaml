@@ -1,0 +1,106 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PetShelter.Uix.Views.DonationWindow"
+        Title="DonationWindow">
+     <Border Background="White"
+            CornerRadius="12"
+            Padding="30">
+
+        <Grid RowDefinitions="Auto,*,Auto">
+
+            <!-- Header -->
+            <StackPanel Grid.Row="0"
+                        Spacing="5"
+                        Margin="0,0,0,25">
+
+                <TextBlock Text="Make a Donation"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="Gray"/>
+
+                <TextBlock Text="Support a pet shelter organization"
+                           FontSize="14"
+                           Foreground="Gray"/>
+
+            </StackPanel>
+
+            <!-- Form -->
+            <StackPanel Grid.Row="1"
+                        Spacing="18">
+
+                <!-- Amount -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Amount"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+
+                    <TextBox x:Name="AmountTextBox"
+                             Watermark="Enter donation amount"
+                             FontSize="16"/>
+                </StackPanel>
+
+                <!-- Source Account -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Source Account"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+
+                    <TextBox x:Name="SourceAccountTextBox"
+                             Watermark="Enter your account number"
+                             FontSize="16"/>
+                </StackPanel>
+
+                <!-- Purpose -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Purpose"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+
+                    <TextBox x:Name="PurposeTextBox"
+                             Watermark="Enter the purpose of the donation"
+                             FontSize="16"/>
+                </StackPanel>
+
+                <!-- Description -->
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Description (optional)"
+                               FontWeight="Bold"
+                               Foreground="Gray"/>
+
+                    <TextBox x:Name="DescriptionTextBox"
+                             Watermark="Additional information..."
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Height="90"
+                             VerticalContentAlignment="Top"
+                             FontSize="16"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="12"
+                        Margin="0,25,0,0">
+
+                <Button Content="Cancel"
+                        Foreground="Gray"
+                        Padding="20,10"
+                        Click="CancelButton_Click"/>
+
+                <Button Content="Confirm Donation"
+                        Foreground="Gray"
+                        Padding="20,10"
+                        Click="ConfirmButton_Click"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+</Window>

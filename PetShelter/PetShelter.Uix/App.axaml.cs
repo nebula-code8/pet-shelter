@@ -4,7 +4,7 @@ using PetShelter.Uix.Views;
 
 namespace PetShelter.Uix;
 
-public class App : Avalonia.Application
+public partial class App : Avalonia.Application
 {
     public override void Initialize()
     {
@@ -13,7 +13,8 @@ public class App : Avalonia.Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) desktop.MainWindow = new LoginWindow();
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow = new MainWindow();
         base.OnFrameworkInitializationCompleted();
     }
 }

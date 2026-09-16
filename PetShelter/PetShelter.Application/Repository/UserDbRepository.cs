@@ -96,7 +96,9 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
                                   phone_number = @phoneNumber,
                                   email = @email,
                                   password = @password,
-                                  role = @role
+                                  role = @role,
+                                  address = @address
+                                  is_deleted = @is_deleted
                               WHERE id = @id;
                               """;
 
@@ -109,6 +111,8 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         AddParameter(command, "@password", user.Password);
         AddParameter(command, "@role", (int)user.Role);
         AddParameter(command, "@id", user.Id);
+        AddParameter(command, "@address", user.Address);
+        AddParameter(command, "@is_deleted", user.IsDeleted);
 
         return command.ExecuteNonQuery();
     }
@@ -185,7 +189,8 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
         IDbCommand command = connection.CreateCommand();
 
         command.CommandText = """
-                              DELETE FROM users
+                              UPDATE users
+                              SET is_deleted = TRUE
                               WHERE id = @id;
                               """;
 
@@ -209,5 +214,21 @@ public class UserDbRepository : BaseDbRepository, IUserRepository
             Convert.ToString(reader["address"])!,
             Convert.ToBoolean(reader["is_deleted"])
         );
+    }
+    
+    public bool ExistsByEmail(string email)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = """
+                              SELECT COUNT(*)
+                              FROM users
+                              WHERE email = @email;
+                              """;
+
+        AddParameter(command, "@email", email);
+
+        return Convert.ToInt32(command.ExecuteScalar()) > 0;
     }
 }

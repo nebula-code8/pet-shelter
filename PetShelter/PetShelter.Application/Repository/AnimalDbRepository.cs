@@ -198,16 +198,12 @@ public class AnimalDbRepository : BaseDbRepository, IAnimalRepository
             Convert.ToString(reader["species"])!,
             Convert.ToString(reader["breed"])!,
             (Gender)Convert.ToInt32(reader["gender"]),
-            DateOnly.FromDateTime(
-                Convert.ToDateTime(reader["date_of_birth"])
-            ),
+            (DateOnly)reader["date_of_birth"],
             Convert.ToString(reader["description"])!,
             Convert.ToBoolean(reader["is_vaccinated"]),
             Convert.ToBoolean(reader["is_sterilized"]),
             Convert.ToString(reader["health_status"])!,
-            DateOnly.FromDateTime(
-                Convert.ToDateTime(reader["date_arrived"])
-            ),
+            (DateOnly)reader["date_arrived"],
             Convert.ToInt64(reader["association_id"]),
             Convert.ToBoolean(reader["is_deleted"])
         );

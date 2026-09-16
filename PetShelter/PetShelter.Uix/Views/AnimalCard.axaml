@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PetShelter.Uix.Views.AnimalCard">
+    <Border Background="#F5F5F5"
+            CornerRadius="8"
+            Padding="15">
+
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="15">
+
+            <!-- Animal information -->
+            <StackPanel Grid.Column="0"
+                        Spacing="5">
+
+                <TextBlock x:Name="NameTextBlock"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="Gray"/>
+
+                <TextBlock x:Name="SpeciesTextBlock"
+                           Foreground="Gray"/>
+
+                <TextBlock x:Name="BreedTextBlock"
+                           Foreground="Gray"/>
+
+                <TextBlock x:Name="GenderTextBlock"
+                           Foreground="Gray"/>
+
+                <TextBlock x:Name="DateOfBirthTextBlock"
+                           Foreground="Gray"/>
+
+            </StackPanel>
+
+            <!-- Info button -->
+            <Button Grid.Column="1"
+                    Content="Info"
+                    Width="70"
+                    Height="35"
+                    VerticalAlignment="Center"
+                    Background="Black"
+                    Click="InfoButton_Click"/>
+
+        </Grid>
+
+    </Border>
+</UserControl>

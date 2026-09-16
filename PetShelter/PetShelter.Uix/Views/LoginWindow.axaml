@@ -1,10 +1,9 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="PetShelter.Uix.Views.LoginWindow"
-        Title="LoginWindow">
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PetShelter.Uix.Views.LoginWindow">
     <Grid Background="#F5F5F5">
         <Border Width="400" Padding="35" Background="White" CornerRadius="12" HorizontalAlignment="Center"
                 VerticalAlignment="Center">
@@ -16,9 +15,13 @@
                 <TextBox x:Name="PasswordTextBox" PasswordChar="●" Watermark="Enter your password" />
                 <TextBlock x:Name="ErrorTextBlock" Foreground="Red" IsVisible="False" TextWrapping="Wrap" />
                 <Button Content="Login" Height="42" Foreground="Gray" Click="LoginButton_Click" />
-                <TextBlock Text="Don't have an account?" HorizontalAlignment="Center" Margin="0,10,0,0" />
+                <TextBlock Text="Don't have an account?" HorizontalAlignment="Center" Foreground="Gray"
+                           Margin="0,10,0,0" />
                 <Button Content="Register as Client" Height="42" Foreground="Gray" Click="RegisterButton_Click" />
+                <Button Content="Continue as Ghost" Height="42" Foreground="Gray" Click="GhostLogin_Click"
+                        x:Name="GhostLoginButton" />
+                <Button Content="Register as Volunteer" Height="42" Foreground="Gray" Click="RegisterVolunteerButton_Click" />
             </StackPanel>
         </Border>
     </Grid>
-</Window>
+</UserControl>

@@ -34,10 +34,15 @@ public class AssociationService : IAssociationService
     {
         return _associationRepository.GetById(id);
     }
+    
+    public Association? GetByAdminId(long adminId)
+    {
+        return _associationRepository.GetByAdminId(adminId);
+    }
 
     public List<Association> GetAll()
     {
-        return _associationRepository.GetAll();
+        return _associationRepository.GetAll().Where(a => a.IsDeleted == false).ToList();
     }
 
     public void Delete(long id)
@@ -59,5 +64,15 @@ public class AssociationService : IAssociationService
         {
             throw new Exception("Please fill in all fields.");
         }
+    }
+    
+    public bool ExistsByEmail(
+        string email,
+        long? excludeId = null)
+    {
+        return _associationRepository.ExistsByEmail(
+            email,
+            excludeId
+        );
     }
 }

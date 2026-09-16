@@ -4,10 +4,10 @@ using PetShelter.Application.Services.ServiceInterfaces;
 
 namespace PetShelter.Application.Services;
 
-public class UserService: IUserService
+public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    
+
     public UserService()
     {
         _userRepository = Injector.CreateInstance<IUserRepository>();
@@ -34,7 +34,8 @@ public class UserService: IUserService
             Console.WriteLine(ex);
 
             throw new Exception(
-                "Registration failed. The email may already be in use."
+                "Registration failed. " +
+                "The email may already be in use."
             );
         }
     }
@@ -44,9 +45,19 @@ public class UserService: IUserService
         var result = _userRepository.AuthenticateUser(email, password);
         return result;
     }
-    
+
     public List<User> GetAll()
     {
-        return _userRepository.GetAll();
+        return _userRepository.GetAll().Where(u => u.IsDeleted == false).ToList();
+    }
+
+    public User GetById(long id)
+    {
+        return _userRepository.GetById(id);
+    }
+    
+    public bool ExistsByEmail(string email)
+    {
+        return _userRepository.ExistsByEmail(email);
     }
 }

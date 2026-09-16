@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -10,7 +11,7 @@ using PetShelter.Application.Services.ServiceInterfaces;
 
 namespace PetShelter.Uix.Views;
 
-public partial class RegistrationWindow : Window
+public partial class RegistrationWindow : UserControl
 {
     private readonly IUserService _userService;
 
@@ -94,9 +95,10 @@ public partial class RegistrationWindow : Window
 
     private void BackButton_Click(object? sender, RoutedEventArgs e)
     {
-        LoginWindow loginWindow = new();
-        loginWindow.Show();
-        this.Close();
+        if (VisualRoot is MainWindow window)
+        {
+            window.ShowLogin();
+        }
     }
 
     private void ShowError(string message)

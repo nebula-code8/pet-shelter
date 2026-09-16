@@ -12,9 +12,11 @@
 			<StackPanel Spacing="10">
 				<TextBlock Text="Volunteer Panel" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
 
-				<Button Content="Adopters" Width="200" HorizontalAlignment="Center" Click="AdoptersButton_Click"/>
+			<Button Content="Adopters" Width="200" HorizontalAlignment="Center" Click="AdoptersButton_Click"/>
 
-				<Button Content="Logout" Width="90" HorizontalAlignment="Left" Click="LogoutButton_Click"/>
+			<Button Content="Adoption Requests" Width="200" HorizontalAlignment="Center" Click="AdoptionRequestsButton_Click"/>
+
+			<Button Content="Logout" Width="90" HorizontalAlignment="Left" Click="LogoutButton_Click"/>
 			</StackPanel>
 		</Border>
 	</Grid>

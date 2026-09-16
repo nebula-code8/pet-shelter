@@ -20,6 +20,12 @@ public partial class VolunteerWindow : Window
         await window.ShowDialog(this);
     }
 
+    private async void AdoptionRequestsButton_Click(object? sender, RoutedEventArgs e)
+    {
+        AdoptionRequestsWindow window = new();
+        await window.ShowDialog(this);
+    }
+
     private void LogoutButton_Click(object? sender, RoutedEventArgs e)
     {
         MainWindow mainWindow = new();

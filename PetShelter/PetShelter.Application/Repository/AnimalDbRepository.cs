@@ -61,6 +61,46 @@ public class AnimalDbRepository : BaseDbRepository, IAnimalRepository
         return Convert.ToInt64(command.ExecuteScalar());
     }
 
+    public List<Animal> GetAvailableForAssociation(long associationId)
+    {
+        using IDbConnection connection = CreateConnection();
+        IDbCommand command = connection.CreateCommand();
+
+        command.CommandText = @"SELECT
+                                  id,
+                                  name,
+                                  species,
+                                  breed,
+                                  gender,
+                                  date_of_birth,
+                                  description,
+                                  is_vaccinated,
+                                  is_sterilized,
+                                  health_status,
+                                  date_arrived,
+                                  association_id,
+                                  is_deleted
+                              FROM animals a
+                              WHERE a.is_deleted = FALSE
+                                AND a.association_id = @assocId
+                                AND NOT EXISTS (
+                                    SELECT 1 FROM temporary_adoptions t
+                                    WHERE t.animal_id = a.id
+                                      AND t.end_date IS NULL
+                                );";
+
+        AddParameter(command, "@assocId", associationId);
+
+        using IDataReader reader = command.ExecuteReader();
+        List<Animal> list = new();
+        while (reader.Read())
+        {
+            list.Add(MapAnimal(reader));
+        }
+
+        return list;
+    }
+
     public int Update(Animal animal)
     {
         using IDbConnection connection = CreateConnection();

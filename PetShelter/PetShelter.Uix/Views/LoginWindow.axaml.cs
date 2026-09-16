@@ -98,7 +98,9 @@ public partial class LoginWindow : UserControl
                     return;
                 }
 
-                ShowError("Volunteer functionality is not implemented yet.");
+                VolunteerWindow volunteerWindow = new(userId);
+                volunteerWindow.Show();
+                window.Close();
                 return;
             }
 

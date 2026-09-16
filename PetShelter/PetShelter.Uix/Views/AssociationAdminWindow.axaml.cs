@@ -30,12 +30,16 @@ public partial class AssociationAdminWindow : Window
     {
     }
 
-    private void AdoptersButton_Click(object? sender, RoutedEventArgs e)
+    private async void AdoptersButton_Click(object? sender, RoutedEventArgs e)
     {
+        AllAdoptersWindow window = new();
+        await window.ShowDialog(this);
     }
 
-    private void AdoptionRequestsButton_Click(object? sender, RoutedEventArgs e)
+    private async void AdoptionRequestsButton_Click(object? sender, RoutedEventArgs e)
     {
+        AdoptionRequestsWindow window = new();
+        await window.ShowDialog(this);
     }
 
     private async void FinancesButton_Click(

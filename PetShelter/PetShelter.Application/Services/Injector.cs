@@ -20,6 +20,8 @@ public class Injector
         { typeof(IAssociationService), () => new AssociationService() },
         { typeof(IUserService), () => new UserService() },
         { typeof(IVolunteerService), () => new VolunteerService() },
+        { typeof(ITemporaryAdoptionRepository), () => new TemporaryAdoptionDbRepository() },
+        { typeof(ITemporaryAdoptionService), () => new TemporaryAdoptionService() },
         { typeof(IBankAccountRepository), () => new BankAccountDbRepository() },
         { typeof(IBankTransactionRepository), () => new BankTransactionDbRepository() },
         { typeof(IFinanceService), () => new FinanceService() },

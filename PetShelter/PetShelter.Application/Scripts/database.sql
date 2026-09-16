@@ -91,3 +91,14 @@ CREATE TABLE adoption_requests
     adoption_date DATE,
     request_date  DATE
 );
+
+-- Temporary adoptions: link a volunteer (user) to an animal temporarily without changing adoption status
+DROP TABLE IF EXISTS temporary_adoptions CASCADE;
+CREATE TABLE temporary_adoptions
+(
+    user_id    BIGINT REFERENCES users (id),
+    animal_id  BIGINT REFERENCES animals (id),
+    start_date DATE NOT NULL,
+    end_date   DATE,
+    PRIMARY KEY (user_id, animal_id, start_date)
+);

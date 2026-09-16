@@ -16,6 +16,11 @@
 
 			<Button Content="Adoption Requests" Width="200" HorizontalAlignment="Center" Click="AdoptionRequestsButton_Click"/>
 
+			<Button Content="Temporarily Adopt" Width="200" HorizontalAlignment="Center" Click="TemporarilyAdoptButton_Click"/>
+
+			<TextBlock Text="Your temporary adoptions:" FontWeight="Bold" Margin="0,10,0,0"/>
+			<ListBox Name="TemporaryAdoptionsListBox" Height="120"/>
+
 			<Button Content="Logout" Width="90" HorizontalAlignment="Left" Click="LogoutButton_Click"/>
 			</StackPanel>
 		</Border>

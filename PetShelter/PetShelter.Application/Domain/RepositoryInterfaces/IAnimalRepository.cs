@@ -6,5 +6,6 @@ public interface IAnimalRepository
     public int Update(Animal animal);
     public Animal? GetById(long id);
     public List<Animal> GetAll();
+    public List<Animal> GetAvailableForAssociation(long associationId);
     public bool Delete(long id);
 }

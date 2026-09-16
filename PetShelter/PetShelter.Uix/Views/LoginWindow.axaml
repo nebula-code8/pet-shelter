@@ -21,6 +21,7 @@
                 <Button Content="Continue as Ghost" Height="42" Foreground="Gray" Click="GhostLogin_Click"
                         x:Name="GhostLoginButton" />
                 <Button Content="Register as Volunteer" Height="42" Foreground="Gray" Click="RegisterVolunteerButton_Click" />
+                <Button Content="Cancle" IsVisible="False" IsEnabled="False" Height="42" Foreground="Gray" Click="CancelButton_Click" x:Name="CancleButton"/>
             </StackPanel>
         </Border>
     </Grid>

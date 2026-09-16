@@ -25,6 +25,9 @@ public partial class LoginWindow : UserControl
         if (_isGhost)
         {
             GhostLoginButton.IsVisible = false;
+            GhostLoginButton.IsVisible = false;
+            CancleButton.IsVisible = true;
+            CancleButton.IsEnabled = true;
         }
     }
 
@@ -130,6 +133,14 @@ public partial class LoginWindow : UserControl
     }
 
     private void GhostLogin_Click(object? sender, RoutedEventArgs e)
+    {
+        if (VisualRoot is MainWindow window)
+        {
+            window.ShowGhostHome();
+        }
+    }
+
+    private void CancelButton_Click(object? sender, RoutedEventArgs e)
     {
         if (VisualRoot is MainWindow window)
         {
